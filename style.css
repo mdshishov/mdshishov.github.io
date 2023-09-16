@@ -1,0 +1,49 @@
+html {
+  font-size: 15px;
+}
+  
+body {
+  font-family: Manrope;
+  background-color: rgb(210, 210, 210);
+}
+
+table {
+  background-color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 20px;
+  margin: auto;
+  text-align: center;
+  border-spacing: 0;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+th{
+  font-size: 1.5rem;
+  padding-bottom: 10px;
+}
+
+.underline td {
+  padding: 0px 20px;
+  border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+.linedark .left {
+    border-radius: 5px 0px 0px 5px;
+}
+
+.linedark .right {
+    border-radius: 0px 5px 5px 0px;
+}
+
+.linedark {
+  background-color: rgb(240, 240, 240);
+}
+  
