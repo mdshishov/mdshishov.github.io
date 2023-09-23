@@ -237,6 +237,17 @@ button:active {
   padding-top: +2px;
 }
 
+a {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--but-color);
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 h2 {
   padding: 0;
   margin: 0;
