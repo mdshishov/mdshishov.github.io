@@ -227,7 +227,7 @@ button {
 }
 
 button:hover {
-  background-color: var(--but-color-hover);
+  background-color: var(--but-color);
 }
 
 button:active {
