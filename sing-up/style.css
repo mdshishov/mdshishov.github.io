@@ -227,7 +227,7 @@ button {
 }
 
 button:hover {
-  background-color: var(--but-color);
+  box-shadow: 0px 0px 10px var(--but-color-hover);
 }
 
 button:active {
