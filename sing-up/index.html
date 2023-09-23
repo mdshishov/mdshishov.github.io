@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Форма регистрации</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <form>
+    <h1>Персональные данные</h1>
+
+    <h2 class="margin-bot-10">Имя и фамилия</h2>
+
+    <div class="text-input">
+      <label for="name" class="hide-elem">Имя</label>
+      <input id="name" type="text" placeholder="Введите ваше имя">
+    </div>
+
+    <div class="text-input">
+      <label for="surname" class="hide-elem">Фамилия</label>
+      <input id="surname" type="text" placeholder="Введите вашу фамилию">
+    </div>
+
+    <div class="radio-input">
+      <h2>Ваш пол:</h2>
+      
+      <input type="radio" name="gender" value="male" id="radio-male">
+      <label for="radio-male">паркет</label>
+      
+      <input type="radio" name="gender" value="female" id="radio-female">
+      <label for="radio-female">линолиум</label>
+    </div>
+
+    <h2 class="margin-bot-10">Страна рождения</h2>
+
+    <select>
+      <option value="ru" selected>Россия</option>
+      <option value="gb">Англия</option>
+    </select>
+
+    <h2 class="margin-bot-10">Контакты</h2>
+
+    <div class="text-input">
+      <label for="email" class="hide-elem">Email</label>
+      <input id="email" type="text" placeholder="Введите ваш e-mail">
+    </div>
+
+    <div class="text-input">
+      <label for="phone" class="hide-elem">Телефон</label>
+      <input id="phone" type="text" placeholder="Введите ваш номер телефона">
+    </div>
+
+    <div class="check-input">
+      <input type="checkbox" name="approve" value="processing" id="check-processing">
+      <label for="check-processing">Я согласен на обработку персональных данных</label>
+      <br>
+      <input type="checkbox" name="approve" value="mailing" id="check-mailing">
+      <label for="check-mailing">Получать новости</label>
+    </div>
+    
+    <button>Потвердить</button>
+  </form>
+  
+</body>
+</html>

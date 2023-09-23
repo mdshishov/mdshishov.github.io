@@ -1,0 +1,269 @@
+:root {
+  --light-gray: #f2f2f2;
+  --border-gray: #dcdcdc;
+  --text-color: #212121;
+  --text-light: #b3b3b3;
+  --but-color: #4285f4;
+  --but-color-hover: #6fa2f5;
+  --but-color-click: #3974d4;
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: Manrope;
+  src: url("./fonts/Manrope-Regular.ttf");
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: Manrope;
+  src: url("./fonts/Manrope-Bold.ttf");
+}
+
+html{
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--light-gray);
+  
+  color: var(--text-color);
+}
+
+form {
+  width: 300px;
+  height: max-content;
+  background-color: white;
+  box-sizing: border-box;
+
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px var(--border-gray);
+  
+  position:absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+input {
+  font-family: Manrope, sans-serif;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.text-input {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+input[type="text"] {
+  box-sizing: border-box;
+  width: 100%;
+
+  padding: 0 10px;
+  margin-bottom: 10px;
+
+  height: 35px;
+  border: 1px solid var(--border-gray);
+  border-radius: 5px;
+  vertical-align: middle;
+}
+
+input[type="text"]:focus {
+  outline-color: var(--but-color);
+}
+
+input[type="text"]::placeholder {
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+.radio-input {
+  margin-bottom: 15px;
+}
+
+input[type="radio"] + label {
+  white-space: nowrap;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  visibility: hidden;
+}
+
+input[type="radio"] + label::before {
+  height:14px;
+  width:14px;
+  margin-right: 5px;
+  margin-bottom: -2px;
+  border-radius: 50%;
+  content: "";
+  display: inline-block;
+  box-sizing: border-box;
+  border:1px solid var(--text-light);
+}
+
+input[type="radio"]:checked + label::before {
+  
+  border-color: var(--but-color);
+  background:
+    radial-gradient(
+      var(--text-color),
+      var(--text-color) 3px,
+      white 3px,
+      white
+    );
+}
+
+select {
+  appearance: none;
+
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  color: var(--text-color);
+
+  background-image: url("./down.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-position-x: calc(100% - 10px);
+  background-size: auto 10px;
+
+  box-sizing: border-box;
+  width: 100%;
+
+  padding: 0 10px;
+  margin-bottom: 10px;
+
+  height: 35px;
+  border: 1px solid var(--border-gray);
+  border-radius: 5px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+select:hover {
+  outline: 2px solid var(--but-color);
+  outline-offset: -2px;
+  border-radius: 6px;
+}
+
+select:focus {
+  outline-color: var(--but-color);
+}
+
+input[type="checkbox"] + label {
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  visibility: hidden;
+}
+
+input[type="checkbox"] + label::before {
+  height:15px;
+  width:15px;
+  margin-left: -20px;
+  margin-right: 5px;
+  margin-bottom: -2px;
+  border: 1px solid var(--text-light);
+  border-radius: 4px;
+  content: "";
+  display: inline-block;
+  box-sizing: border-box;
+  border:1px solid var(--text-light);
+}
+
+input[type="checkbox"]:checked + label::before {
+  
+  border-color: var(--but-color);
+  background-image: url("./check.svg");
+  background-size: contain;
+}
+
+input[type="checkbox"] + label {
+  display:inline-block;
+  margin-left: 20px;
+  line-height: 1rem;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.check-input {
+  margin-bottom: 20px;
+}
+
+button {
+  box-sizing: border-box;
+  width: 100%;
+
+  font-family: Manrope, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+
+  padding: 0 10px;
+
+  height: 35px;
+  background-color: var(--but-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--but-color-hover);
+}
+
+button:active {
+  background-color: var(--but-color-click);
+  box-shadow: inset 0 2px var(--text-light);
+  color: var(--border-gray);
+  padding-top: +2px;
+}
+
+h2 {
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1rem;
+  margin-top: 5px;
+  margin-bottom:5px;
+}
+
+h1 {
+  margin: 0px;
+  margin-bottom: 20px;
+  
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+}
+
+.hide-elem {
+  border: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+  height: 0px;
+  width: 0px;
+}
+
+.margin-bot-10 {
+  margin-bottom: 10px;
+}
