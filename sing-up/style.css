@@ -8,26 +8,16 @@
   --but-color-click: #3974d4;
 }
 
-@font-face {
-  font-weight: 400;
-  font-family: Manrope;
-  src: url("./fonts/Manrope-Regular.ttf");
-}
-
-@font-face {
-  font-weight: 700;
-  font-family: Manrope;
-  src: url("./fonts/Manrope-Bold.ttf");
-}
-
-html{
-  font-family: Manrope, sans-serif;
+html {
+  font-family: "Manrope", sans-serif;
   font-size: 14px;
   color: var(--text-color);
 }
 
 body {
-  width: 100vw;
+  display:flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   background-color: var(--light-gray);
   
@@ -44,17 +34,27 @@ form {
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px var(--border-gray);
+}
+
+h1 {
+  margin: 0px;
+  margin-bottom: 20px;
   
-  position:absolute;
-  top:0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+}
+
+h2 {
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1rem;
+  margin-top: 5px;
+  margin-bottom:5px;
 }
 
 input {
-  font-family: Manrope, sans-serif;
+  font-family: "Manrope", sans-serif;
   font-size: 1rem;
   color: var(--text-color);
 }
@@ -87,6 +87,15 @@ input[type="text"]::placeholder {
   font-size: 1rem;
 }
 
+.hide-elem {
+  border: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+  height: 0px;
+  width: 0px;
+}
 
 .radio-input {
   margin-bottom: 15px;
@@ -106,12 +115,12 @@ input[type="radio"] {
 }
 
 input[type="radio"] + label::before {
+  content: "";
   height:14px;
   width:14px;
   margin-right: 5px;
   margin-bottom: -2px;
   border-radius: 50%;
-  content: "";
   display: inline-block;
   box-sizing: border-box;
   border:1px solid var(--text-light);
@@ -136,6 +145,7 @@ select {
   font-size: 14px;
   color: var(--text-color);
 
+  background-color: white;
   background-image: url("./down.svg");
   background-repeat: no-repeat;
   background-position: right;
@@ -165,8 +175,17 @@ select:focus {
   outline-color: var(--but-color);
 }
 
+.check-input {
+  margin-bottom: 20px;
+}
+
 input[type="checkbox"] + label {
   cursor: pointer;
+  display:inline-block;
+  margin-left: 20px;
+  line-height: 1rem;
+  font-size: 0.9rem;
+  margin-top: 5px;
 }
 
 input[type="checkbox"] {
@@ -177,14 +196,14 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"] + label::before {
-  height:15px;
-  width:15px;
+  content: "";
+  height: 15px;
+  width: 15px;
   margin-left: -20px;
   margin-right: 5px;
   margin-bottom: -2px;
   border: 1px solid var(--text-light);
   border-radius: 4px;
-  content: "";
   display: inline-block;
   box-sizing: border-box;
   border:1px solid var(--text-light);
@@ -195,18 +214,6 @@ input[type="checkbox"]:checked + label::before {
   border-color: var(--but-color);
   background-image: url("./check.svg");
   background-size: contain;
-}
-
-input[type="checkbox"] + label {
-  display:inline-block;
-  margin-left: 20px;
-  line-height: 1rem;
-  font-size: 0.9rem;
-  margin-top: 5px;
-}
-
-.check-input {
-  margin-bottom: 20px;
 }
 
 button {
@@ -236,7 +243,7 @@ button:active {
   background-color: var(--but-color-click);
   box-shadow: inset 0 2px var(--text-light);
   color: var(--border-gray);
-  padding-top: +2px;
+  padding-top: 2px;
 }
 
 a {
@@ -248,33 +255,6 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-h2 {
-  padding: 0;
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1rem;
-  margin-top: 5px;
-  margin-bottom:5px;
-}
-
-h1 {
-  margin: 0px;
-  margin-bottom: 20px;
-  
-  font-size: 1.8rem;
-  line-height: 1.8rem;
-}
-
-.hide-elem {
-  border: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  overflow: hidden;
-  height: 0px;
-  width: 0px;
 }
 
 .margin-bot-10 {
