@@ -30,6 +30,10 @@
   url('./fonts/gilroy-bold.ttf') format('truetype'), /* Safari, Android, iOS */
   url('./fonts/gilroy-bold.svg#gilroy-bold') format('svg'); /* Chrome < 4, Legacy iOS */
 }
+html {
+  margin: 0;
+  padding: 0;
+}
 
 body {
     background: #040C18;
@@ -39,8 +43,8 @@ body {
 
     margin: 0;
     padding: 0;
-    min-width: 1440px;
     flex-wrap: nowrap;
+    min-width: 1440px;
   }
 
 
