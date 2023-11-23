@@ -79,8 +79,8 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
-  outline-style: solid;
-  outline-color: var(--but-color);
+  outline: 2px solid var(--but-color);
+  outline-offset: -2px;
 }
 
 input[type="text"]::placeholder {
@@ -173,8 +173,8 @@ select:hover {
 }
 
 select:focus {
-  outline-style: solid;
-  outline-color: var(--but-color);
+  outline: 2px solid var(--but-color);
+  outline-offset: -2px;
 }
 
 .check-input {
