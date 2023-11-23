@@ -79,6 +79,7 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
+  outline-style: solid;
   outline-color: var(--but-color);
 }
 
@@ -172,6 +173,7 @@ select:hover {
 }
 
 select:focus {
+  outline-style: solid;
   outline-color: var(--but-color);
 }
 
