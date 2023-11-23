@@ -532,6 +532,146 @@ a.link-style1:focus {
   font: 12px Gilroy-Medium;
 }
 
+
+/* Часть Данила */
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important
+}
+
+a {
+  text-decoration: none
+}
+
+/*@import url("https://fonts.googleapis.com/css?family=Manrope:800,500,400,700");*/
+
+.desktop {
+  width: 1044px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 155px
+}
+
+.desktop .feature-image {
+  width: 546px;
+  height: 608px
+}
+
+.desktop .content {
+  width: 479px;
+}
+.desktop .p1 {
+  font-family: "Manrope";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #71E5FF;
+
+  margin-bottom: 10px;
+}
+
+.desktop .text-wrapper {
+  width: 426px;
+  background: linear-gradient(89.97deg, #AE67FA 1.84%, #F49867 102.67%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: transparent;
+  font-size: 34px;
+  letter-spacing: 0;
+  line-height: 45px;
+
+  margin-bottom: 23px;
+}
+
+.desktop .p {
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  color: #81AFDD;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 30px;
+  
+  margin-bottom: 31px;
+}
+
+.desktop .text-wrapper-2 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  color: #FF8A71;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 30px;
+  display: block;
+  margin-bottom: 35px;
+}
+
+.overlap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1170px;
+  height: 173px;
+  background: linear-gradient(89.97deg, #AE67FA 1.84%, #F49867 102.67%);
+  margin-bottom: 155px;
+  border-radius: 11px;
+
+  padding-left: 46px;
+  padding-right: 38px;
+}
+
+.overlap-2 {
+  width: 802px;
+}
+
+.register-today-start {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: 45px;
+}
+
+.text-wrapper-4 {
+  width: 319px;
+  color: #0e0e0e;
+  font-size: 12px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 30px;
+  height: 47px;
+  margin-bottom: -20px;
+}
+
+
+.text-wrapper-5 {
+  width: 190px;
+  height: 60px;
+  background-color: #000000;
+  border-radius: 30px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 30px;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+
+
 /* Дополнительные стили */
 
 .blur-01 {
