@@ -1,0 +1,158 @@
+:root {
+  --bg-color1: #f6f3f3;
+  --bg-color2: #eceaea;
+  --bg-color3: #403432;
+  --bg-color4: #776763;
+  --bg-color5: #c1b4b1;
+  --txt-color1: #343030;
+  --txt-color2: #9f9f9f;
+  --txt-color3: #f4f6f9;
+  --line-color1: #e1e1e1;
+  --line-color2: #b5b5b5;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-family: "Merriweather", serif;
+  color: var(--txt-color1);  
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-width: 1216px;
+  background-color: var(--bg-color1);
+}
+
+[class*="txt-style"] {
+  font-family: "Merriweather", serif;
+  color: var(--txt-color1);  
+}
+.txt-style1 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+}
+.txt-style2 {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+}
+.txt-style3 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+}
+.txt-style4 {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+}
+.txt-style5 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+}
+.txt-style6 {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.basic-button {
+  display: inline-block;
+
+  border: none;
+  background-color: var(--bg-color3);
+
+  text-align: center;
+  color: var(--txt-color3);
+}
+.basic-button:hover {
+  background-color: var(--bg-color4);
+  cursor: pointer;
+}
+.basic-button:disabled {
+  background-color: var(--bg-color5);
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+
+  box-sizing: border-box;
+  height: 96px;
+
+  background-color: var(--bg-color1);
+  border-bottom: 1px solid var(--line-color1);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1216px;
+  height: 100%;
+}
+
+.navigation-list {
+  list-style: none;
+
+  display: flex;
+  align-items: center;
+  column-gap: 48px;
+  line-height: 0;
+}
+.navigation-list .logo {
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+  background-image: url("./assets/logo-museum 2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.navigation-list a,
+.navigation-list a:hover,
+.navigation-list a:focus,
+.navigation-list a:visited {
+  text-decoration: none;
+  color: var(--txt-color1);
+  outline: 0;
+}
+.navigation-list a:hover,
+.navigation-list a:focus {
+  color: var(--txt-color2);
+}
+
+.search-line {
+  width: 416px;
+  height: 48px;
+}
+.search-line .search-input {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 100%;
+  width: calc(100% - 122px);
+  padding-right: 16px;
+  padding-left: 16px;
+  
+  background-color: var(--bg-color1);
+  border: 1px solid var(--line-color1);
+  border-right: 0;
+}
+.search-line .search-input::placeholder {
+  color: var(--txt-color2);
+}
+.search-line .search-input:focus {
+  outline: none;
+  border-color: var(--line-color2);
+}
+.search-line .basic-button {
+  height: 100%;
+  width: 122px;
+}
+
