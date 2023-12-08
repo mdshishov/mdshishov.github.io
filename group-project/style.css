@@ -171,6 +171,11 @@ body {
   flex-wrap: wrap;
   margin-top: 39px;
 }
+.catalog h2 {
+  margin: 16px 36px 22px 24px;
+  position: relative;
+  z-index: 10;
+}
 
 .catalog-item {
   width: 280px;
@@ -200,10 +205,14 @@ body {
   object-fit: cover;
   border-bottom: 1px solid var(--line-color1);
 }
-.catalog h2 {
-  margin: 16px 36px 22px 24px;
-  position: relative;
-  z-index: 10;
+.catalog-item .buy > p {
+  display: none;
+}
+.catalog-item[disabled] .buy > p {
+  display: block;
+}
+.catalog-item[disabled] .buy .price {
+  display: none;
 }
 
 .buy {
