@@ -10,14 +10,14 @@
     font-family: 'Roboto';
     font-weight: 400;
     font-style: normal;
-    src: url('./src/fonts/Roboto-Regular.ttf') format('ttf');
+    src: url('./src/fonts/Roboto-Regular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Roboto';
     font-weight: 700;
     font-style: normal;
-    src: url('./src/fonts/Roboto-Bold.ttf') format('ttf');
+    src: url('./src/fonts/Roboto-Bold.ttf') format('truetype');
 }
 
 * {
