@@ -32,9 +32,10 @@ body {
 }
 
 .main {
-    max-width: 1170px;
-    margin: auto;
+    max-width: 1230px;
+    margin: 0 auto;
     margin-top: 50px;
+    padding: 0 30px;
 }
 
 h1, h2 {
@@ -80,7 +81,7 @@ a {
     margin-bottom: 25px;
 }
 
-.card-container {
+.container {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -90,6 +91,7 @@ a {
 
 .card {
     min-height: 505px;
+    min-width: 300px;
     width: 40%;
     background-color: var(--bg-color1);
     box-shadow: 0px 0px 40px var(--shadow-color);
