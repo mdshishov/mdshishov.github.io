@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <script defer src="./code.js"></script>
 </head>
 <body>
     <section class="main">
@@ -12,71 +13,11 @@
         <a class="back-main" href="">На главную</a>
         <h1>Модули курса Веб-верстка</h1>
 
-        <div class="container">
-            <div class="card">
-                <img src="./src/images/img1.png">
-                <div>
-                    <div>
-                        <h2>Введение</h2>
-                        <ul>
-                            <li>Как работают сайты. Верстка</li>
-                            <li>Возможности HTML, CSS, JS</li>
-                            <li>Редактор кода. Codepen</li>
-                            <li>Работа с DevTools</li>
-                        </ul>
-                    </div>
-                    <p class="number">01</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./src/images/img2.png">
-                <div>
-                    <div>
-                        <h2>Базовый HTML</h2>
-                        <ul>
-                            <li>Базовые теги</li>
-                            <li>Теги картинок и ссылок</li>
-                            <li>Теги таблиц</li>
-                            <li>Служебные теги</li>
-                            <li>Кодстайл HTML</li>
-                        </ul>
-                    </div>
-                    <p class="number">02</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./src/images/img3.png">
-                <div>
-                    <div>
-                        <h2>Базовый CSS</h2>
-                        <ul>
-                            <li>Подключение CSS</li>
-                            <li>Вес селектора</li>
-                            <li>Свойство display</li>
-                            <li>Блочная модель и позиционирование</li>
-                            <li>Кодстайл CSS</li>
-                        </ul>
-                    </div>
-                    <p class="number">03</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./src/images/img4.png">
-                <div>
-                    <div>
-                        <h2>Работа с макетом</h2>
-                        <ul>
-                            <li>Про форматы изображений</li>
-                            <li>Работа с макетом в Photoshop</li>
-                            <li>Работа с макетом в Figma</li>
-                        </ul>
-                    </div>
-                    <p class="number">04</p>
-                </div>
-            </div>
+        <div id="container" class="container">
         </div>
 
-        <button>Показать ещё</button>
+        <button id="more">Показать ещё</button>
+        <button id="hide" class="hidden">Скрыть лишнее</button>
     </section>
 </body>
 </html>
