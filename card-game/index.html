@@ -8,16 +8,30 @@
     <script defer src="./code.js"></script>
 </head>
 <body>
-    <section class="main">
-        <h1 class="main__title">Игра в карточки</h1>
+    <section id="start-screen">
+        <h1>Найди пару</h1>
+        <p>Выберите количество пар</p>
         <form>
-            <input type="range" id="slider" min="2" max="10" step="1" value="4">
-            <label for="slider" id="label">4</label>
+            <label id="label" for="slider">4</label>
+            <input id="slider" type="range" min="2", max="8" step="1" value="4">
         </form>
-        <button id="start-game">Начать</button>
+        <button id="start-button">Начать</button>
+    </section>
+    <section id="game-screen">
+        <div class="bar">
+            <div id="timer-line"></div>
+        </div>
+        <div class="bar">
+            <div id="progress-line"></div>
+        </div>
+        <div id="container">
 
-        <div id="container" class="main__container">
         </div>
     </section>
+    <section id="end-screen">
+        <h2 id="end-message"></h2>
+        <button id="end-button">Сыграть ещё</button>
+    </section>
+    
 </body>
 </html>
