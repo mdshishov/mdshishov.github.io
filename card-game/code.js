@@ -147,7 +147,7 @@ function createCards(arr) {
     const frontSide = document.createElement('div');
     frontSide.classList.add('card-front');
     frontSide.textContent = number;
-    frontSide.style.backgroundColor = colors[number];
+    frontSide.style.backgroundColor = colors[number - 1];
 
     const backSide = document.createElement('div');
     backSide.classList.add('card-back');
