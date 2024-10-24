@@ -12,10 +12,12 @@
 </head>
 <body>
     <section id="start-screen">
-        <h1>Найди пару</h1>
-        <p>Выберите количество пар</p>
+        <h1>ИГРА В ПАРЫ</h1>
+        <div class="pairs-amount">
+            <span id="label" class="label">4</span><span class="label"> × </span>
+            <div class="cards-image"></div>
+        </div>
         <form>
-            <label id="label" for="slider">4</label>
             <input id="slider" type="range" min="2", max="8" step="1" value="4">
         </form>
         <button id="start-button">НАЧАТЬ</button>
@@ -34,8 +36,8 @@
         </div>
     </section>
     <section id="end-screen">
-        <h2 id="end-message"></h2>
-        <button id="end-button">Сыграть ещё</button>
+        <h1 id="end-message"></h2>
+        <button id="end-button">ЕЩЁ РАЗ</button>
     </section>
 </body>
 </html>

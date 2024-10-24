@@ -1,8 +1,8 @@
 :root {
-    --c1: #c4c4c4;
-    --c2: #caa05a;
-    --c3: #8ea091;
-    --c4: #543344;
+    --c1: #c3dce5;
+    --c2: #ee6a7c;
+    --c3: #c3dce5;
+    --c4: #222426;
 }
 
 * {
@@ -10,6 +10,7 @@
     padding: 0px;
     border: none;
     background: none;
+    box-sizing: border-box;
 }
 
 body {
@@ -24,23 +25,41 @@ body {
     background-color: #ffffff;
 }
 
+h1 {
+    font-weight: 500;
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+#start-screen {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label {
+    font-weight: 500;
+    font-size: 40px;
+}
+
 #game-screen {
     width: 350px;
     display: none;
 }
 #end-screen {
     display: none;
+    flex-direction: column;
+    align-items: center;
 }
 
 #container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    align-content: center;
-    width: 360px;
-    height: 360px;
+    width: 350px;
     gap: 10px;
+    margin-top: 10px;
 }
 .card {
     width: 80px;
@@ -49,6 +68,9 @@ body {
     transition: transform 0.5s;
     position:relative;
     transform-style: preserve-3d;
+}
+.card:hover .card-back {
+    border-color: var(--c2);
 }
 
 .flip {
@@ -81,7 +103,7 @@ body {
 
 .bar {
     width: 100%;
-    height: 20px;
+    height: 25px;
     overflow: hidden;
     border: 1px solid var(--c1);
     border-radius: 5px;
@@ -93,8 +115,9 @@ body {
     font-weight: 300;
     font-size: 16px;
     line-height: 16px;
-    top: 2px;
-    right: 2px;
+    text-align: right;
+    top: 3px;
+    right: 4px;
 }
 #progress-line {
     background-color: var(--c3);
@@ -113,12 +136,49 @@ button {
     font-family: "Oswald", sans-serif;
     font-weight: 300;
     font-size: 16px;
+    text-align: center;
+    margin: 0px auto;
     line-height: 16px;
     padding: 12px 36px;
     border: 1px solid var(--c1);
     border-radius: 5px;
-    transition: background-color 0.5s, border 0.5s, color 0.5s;
+    cursor: pointer;
 }
 button:hover {
     color: #ffffff;
+    background-color: var(--c2);
+    border-color: var(--c2);
+}
+
+.cards-image {
+    display:inline-block;
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    background-color: var(--c2);
+    box-shadow: 10px 10px 0px var(--c1);
+    position: relative;
+    top: 5px;
+}
+
+.pairs-amount {
+    margin-bottom: 10px;
+}
+
+#slider {
+    appearance: none;
+    box-sizing: border-box;
+    border: 1px solid var(--c1);
+    border-radius: 5px;
+    width: 200px;
+    height: 10px;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+#slider::-webkit-slider-thumb{
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background-color: var(--c2);
+    border-radius: 50%;
 }

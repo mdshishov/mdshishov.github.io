@@ -20,7 +20,7 @@ const endButton = document.getElementById('end-button');
 let gameEnded = true;
 let progress = 0;
 let amount = 0;
-let colors =  ['#c9cca1', '#caa05a', '#ae6a47', '#8b4049', '#543344', '#515262', '#63787d', '#8ea091'];
+let colors =  ['#c3dce5', '#a3becc', '#8598a6', '#667480', '#4c5359', '#363940', '#222426', '#ee6a7c'];
 let numbers = [];
 const opened = [];
 
@@ -63,13 +63,13 @@ function setProgress() {
 function endGame(outcome) {
   gameScreen.style.display = 'none';
   gameEnded = true;
-  endMessage.textContent = outcome === 'win' ? 'Победа!' : 'Поражение';
-  endScreen.style.display = 'block';
+  endMessage.textContent = outcome === 'win' ? 'ПОБЕДА!' : 'ПОРАЖЕНИЕ';
+  endScreen.style.display = 'flex';
   resetGame();
 }
 
 function tryAgain() {
-  startScreen.style.display = 'block';
+  startScreen.style.display = 'flex';
   endScreen.style.display = 'none';
 }
 endButton.addEventListener('click', tryAgain);
@@ -131,7 +131,7 @@ function clickCard(event) {
           card2.addEventListener('click', clickCard);
           opened.pop();
           opened.pop();
-        }, 1000);
+        }, 600);
        }
     }
   }
