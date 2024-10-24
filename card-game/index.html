@@ -6,6 +6,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
     <script defer src="./code.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 </head>
 <body>
     <section id="start-screen">
@@ -15,13 +18,15 @@
             <label id="label" for="slider">4</label>
             <input id="slider" type="range" min="2", max="8" step="1" value="4">
         </form>
-        <button id="start-button">Начать</button>
+        <button id="start-button">НАЧАТЬ</button>
     </section>
     <section id="game-screen">
         <div class="bar">
+            <div id="timer" class="bar-number">00</div>
             <div id="timer-line"></div>
         </div>
         <div class="bar">
+            <div id="progress" class="bar-number">0/0</div>
             <div id="progress-line"></div>
         </div>
         <div id="container">
