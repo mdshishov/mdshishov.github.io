@@ -10,6 +10,8 @@ const gameScreen = document.getElementById('game-screen');
 const container = document.getElementById('container');
 const progressLine = document.getElementById('progress-line');
 const timerLine = document.getElementById('timer-line');
+const timerNumber = document.getElementById('timer');
+const progressNumber = document.getElementById('progress');
 
 const endScreen = document.getElementById('end-screen');
 const endMessage = document.getElementById('end-message');
@@ -18,7 +20,7 @@ const endButton = document.getElementById('end-button');
 let gameEnded = true;
 let progress = 0;
 let amount = 0;
-let colors =  ['#b65780', '#cd909c', '#d1b3a2', '#f0f4c2', '#aac478', '#68a961', '#3d8057', '#439c6e', '#64b3a3', '#9bcfcb', '#6794af', '#4163a0', '#30233a', '#514a73', '#7a72ac', '#d2aadb'];
+let colors =  ['#c9cca1', '#caa05a', '#ae6a47', '#8b4049', '#543344', '#515262', '#63787d', '#8ea091'];
 let numbers = [];
 const opened = [];
 
@@ -50,7 +52,7 @@ function createNumbersArray(count) {
 
 function setProgress() {
   progressLine.style.width = `${(progress / amount) * 100}%`;
-  console.log(progress, amount);
+  progressNumber.textContent = `${progress}/${amount}`;
   if (progress === amount) {
     setTimeout(() => {
       endGame('win');
@@ -94,6 +96,7 @@ function runTimer(time) {
       return;
     }
 
+    timerNumber.textContent = Math.ceil((maxTime - timeDiff) / 1000);
     timerLine.style.width = `${100 * (maxTime - timeDiff) / maxTime}%`;
     requestAnimationFrame(animation);
   }
@@ -173,6 +176,7 @@ function startGame() {
   numbers = mixArray(createNumbersArray(amount));
   colors = mixArray(colors);
   createCards(numbers);
+  setProgress();
 
   gameScreen.style.display = 'block';
   gameEnded = false;
