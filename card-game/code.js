@@ -162,8 +162,6 @@ function createCards(arr) {
 }
 
 function resetGame() {
-  slider.value = 4;
-  label.textContent = '4';
   progress = 0;
   setProgress();
   container.innerHTML = '';
