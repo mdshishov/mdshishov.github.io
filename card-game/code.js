@@ -180,7 +180,7 @@ function startGame() {
 
   gameScreen.style.display = 'block';
   gameEnded = false;
-  runTimer(60);
+  runTimer(Math.floor(5 * 1.4 ** amount));
 }
 
 startButton.addEventListener('click', startGame);
