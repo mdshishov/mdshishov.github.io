@@ -163,6 +163,8 @@ button:hover {
 
 .pairs-amount {
     margin-bottom: 15px;
+    position: relative;
+    left: -5px;
 }
 
 #slider {
