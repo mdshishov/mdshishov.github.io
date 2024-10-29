@@ -1,8 +1,12 @@
 :root {
     --c1: #c3dce5;
-    --c2: #ee6a7c;
-    --c3: #a3becc;
-    --c4: #222426;
+    --c2: #a3becc;
+    --c3: #8598a6;
+    --c4: #667480;
+    --c5: #4c5359;
+    --c6: #363940;
+    --c7: #222426;
+    --c8: #ee6a7c;
 }
 
 * {
@@ -14,37 +18,43 @@
     font-family: "Manrope", sans-serif;
     font-size: 14px;
     font-weight: 500;
-    color: var(--c4);
+    color: var(--c7);
 }
 
 body {
-    min-width: 100vw;
-    min-height: 100vh;
+    width: 100%;
+    min-width: 1160px;
+    height: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    box-sizing: border-box;
+    align-items: center;
     color: var(--c4);
     background-color: #ffffff;
+    padding-top: 50px;
+}
+
+#main {
+    display: flex;
+    gap: 20px;
 }
 
 #container {
-    width: 1000px;
-    margin: 20px auto;
-    columns: 4;
+    width: 790px;
+    columns: 3;
     column-gap: 20px;
 }
 
 .card {
     width: 100%;
-    background-color: red;
     margin-bottom: 20px;
     break-inside: avoid;
     position: relative;
     background-color: #ffffff;
     border: 1px solid var(--c1);
     border-radius: 10px;
-    padding: 25px 25px 60px 25px;
+    padding: 25px 25px 50px 25px;
+    height: auto;
+    transition: border 0.5s, background-color 0.5s;
 }
 
 .corner{
@@ -57,30 +67,41 @@ body {
     border-bottom: 30px solid #ffffff;
     border-right: 30px solid var(--c1);
     border-radius: 0px 10px 0px 0px;
+    transition: border 0.5s;
 }
 
 #input-card {
-    background-color: var(--c2);
-    border-color: var(--c2);
+    width: 250px;
+    padding-bottom: 46px;
 }
-#input-card .corner{
-    border-right: 30px solid #db3d52;
+#input-card.focus {
+    border: none;
+    background-color: var(--c8);
+}
+#input-card.focus .corner{
+    border-right: 30px solid #df3e53;
 }
 
 #input {
+    width: 100%;
     background-color: transparent;
     border: none;
     resize: none;
     font-weight: 500;
-    color: #ffffff;
+    color: var(--c7);
 }
 #input:focus {
     outline: none;
+    color: #ffffff;
 }
 #input::placeholder {
     font-weight: 500;
-    color: #ffffff;
-    opacity: 50%;
+    color: var(--c2);
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+#input.focus::placeholder {
+    opacity: 0;
 }
 
 .icon {
@@ -107,6 +128,12 @@ button {
 .done-button:hover {
     background-image: url("./icons/check-hover.svg");
 }
+.done-button.done {
+    background-image: url("./icons/check-hover.svg");
+}
+.card.done .text {
+    color: var(--c2);
+}
 
 .delete-button {
     bottom: 15px;
@@ -119,18 +146,20 @@ button {
 
 #input-button {
     display: inline-block;
-    right: 17px;
-    bottom: 15px;
+    font-weight: 700;
     background-image: url("./icons/check-white.svg");
     opacity: 100%;
     position: absolute;
-    border-radius: 10px;
-    background-color: var(--c2);
-    transition: opacity 0.5s;
-
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 50px;
+    color: #ffffff;
+    background-color: var(--c8);
+    transition: background-color 0.5s;
 }
 #input-button:disabled {
-    opacity: 0%;
+    background-color: var(--c1);
     cursor: auto;
 }
 .transparent {
