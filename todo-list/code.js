@@ -2,12 +2,22 @@ const input = document.getElementById('input');
 const inputButton = document.getElementById('input-button');
 const inputCard = document.getElementById('input-card');
 const container = document.getElementById('container');
+const deleteAllButton = document.getElementById('delete-all');
+
+if (localStorage.getItem('innerHTML')) {
+   container.innerHTML = localStorage.getItem('innerHTML');
+   [...document.querySelectorAll('.done-button')].forEach((item) => item.addEventListener('click', doneCard));
+   [...document.querySelectorAll('.delete-button')].forEach((item) => item.addEventListener('click', deleteCard));
+}
+document.addEventListener('click', () => {
+  localStorage.setItem('innerHTML', container.innerHTML);
+});
 
 input.addEventListener('input', resizeInput);
 input.addEventListener('keydown', endInput);
 input.addEventListener('focus', focusInputCard);
 input.addEventListener('blur', blurInputCard);
-
+deleteAllButton.addEventListener('click', deleteAll);
 
 function resizeInput(event) {
   input.style.height = 'auto';
@@ -16,13 +26,14 @@ function resizeInput(event) {
 }
 function endInput(event) {
   if (event.keyCode === 13) {
+    event.preventDefault();
     if (input.value.trim().length !== 0) {
       createCard(input.value.trim());
+      input.blur();
+      inputCard.classList.remove('focus');
+      input.value = '';
+      resizeInput();
     }
-    input.blur();
-    inputCard.classList.remove('focus');
-    input.value = '';
-    resizeInput();
   }
 }
 function focusInputCard() {
@@ -34,7 +45,7 @@ function blurInputCard() {
   setTimeout(() => { input.classList.remove('focus')}, 500);
 }
 
-function deleCard(event) {
+function deleteCard(event) {
   const card = event.target.parentNode;
   card.remove();
 }
@@ -44,12 +55,12 @@ function doneCard(event) {
   const card = button.parentNode;
   button.classList.toggle('done');
   card.classList.toggle('done');
-
 }
 
 function createCard(content) {
   const card = document.createElement('div');
   card.classList.add('card');
+  card.classList.add('sided');
 
   const text = document.createElement('div');
   text.classList.add('text');
@@ -63,19 +74,18 @@ function createCard(content) {
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('icon');
   deleteButton.classList.add('delete-button');
-  deleteButton.addEventListener('click', deleCard);
+  deleteButton.addEventListener('click', deleteCard);
 
   const corner = document.createElement('div');
   corner.classList.add('corner');
 
   card.append(text, doneButton, deleteButton, corner);
   container.prepend(card);
+  setTimeout(() => {
+    card.classList.remove('sided');
+  }, 0);
 }
 
-inputButton.addEventListener('click', () => {
-
-})
-
-function addNote() {
-
+function deleteAll() {
+  container.innerHTML = '';
 }

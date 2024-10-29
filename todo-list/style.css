@@ -7,6 +7,7 @@
     --c6: #363940;
     --c7: #222426;
     --c8: #ee6a7c;
+    --c9: #dd465a;
 }
 
 * {
@@ -49,12 +50,20 @@ body {
     margin-bottom: 20px;
     break-inside: avoid;
     position: relative;
+    left: 0px;
     background-color: #ffffff;
     border: 1px solid var(--c1);
     border-radius: 10px;
     padding: 25px 25px 50px 25px;
     height: auto;
-    transition: border 0.5s, background-color 0.5s;
+    transition: border 0.5s, background-color 0.5s, left 0.5s;
+}
+.card.sided {
+    left: -270px;
+}
+
+.text {
+    overflow-wrap: break-word;
 }
 
 .corner{
@@ -73,13 +82,14 @@ body {
 #input-card {
     width: 250px;
     padding-bottom: 46px;
+    margin-bottom: 12px;
 }
 #input-card.focus {
-    border: none;
+    border-color: var(--c8);
     background-color: var(--c8);
 }
 #input-card.focus .corner{
-    border-right: 30px solid #df3e53;
+    border-right: 30px solid var(--c9);
 }
 
 #input {
@@ -164,4 +174,29 @@ button {
 }
 .transparent {
     opacity: 0%;
+}
+
+#delete-all {
+    color: var(--c2);
+    height: 20px;
+    transition: color 0.5s;
+}
+#delete-all:hover {
+    color: var(--c8);
+}
+#delete-all:hover .sub-icon {
+    background-image: url("./icons/delete-hover.svg");
+}
+.sub-icon {
+    display: inline-block;
+    background: none;
+    width: 20px;
+    height: 20px;
+    background-image: url("./icons/delete-c2.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-image 0.5s;
+    vertical-align: bottom;
+    margin-right: 3px;
 }
