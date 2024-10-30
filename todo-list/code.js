@@ -9,9 +9,7 @@ if (localStorage.getItem('innerHTML')) {
    [...document.querySelectorAll('.done-button')].forEach((item) => item.addEventListener('click', doneCard));
    [...document.querySelectorAll('.delete-button')].forEach((item) => item.addEventListener('click', deleteCard));
 }
-document.addEventListener('click', () => {
-  localStorage.setItem('innerHTML', container.innerHTML);
-});
+// document.addEventListener('click', updateLocaleStore);
 
 input.addEventListener('input', resizeInput);
 input.addEventListener('keydown', endInput);
@@ -19,7 +17,7 @@ input.addEventListener('focus', focusInputCard);
 input.addEventListener('blur', blurInputCard);
 deleteAllButton.addEventListener('click', deleteAll);
 
-function resizeInput(event) {
+function resizeInput() {
   input.style.height = 'auto';
   input.style.height = input.scrollHeight + 'px';
   //inputButton.disabled = input.value.trim().length === 0;
@@ -48,6 +46,7 @@ function blurInputCard() {
 function deleteCard(event) {
   const card = event.target.parentNode;
   card.remove();
+  updateLocaleStore();
 }
 
 function doneCard(event) {
@@ -55,6 +54,7 @@ function doneCard(event) {
   const card = button.parentNode;
   button.classList.toggle('done');
   card.classList.toggle('done');
+  updateLocaleStore();
 }
 
 function createCard(content) {
@@ -83,9 +83,15 @@ function createCard(content) {
   container.prepend(card);
   setTimeout(() => {
     card.classList.remove('sided');
+    updateLocaleStore();
   }, 0);
 }
 
 function deleteAll() {
   container.innerHTML = '';
+  updateLocaleStore();
+}
+
+function updateLocaleStore() {
+  localStorage.setItem('innerHTML', container.innerHTML);
 }
