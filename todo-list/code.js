@@ -26,7 +26,7 @@ function endInput(event) {
   if (event.keyCode === 13) {
     event.preventDefault();
     if (input.value.trim().length !== 0) {
-      createCard(input.value.trim());
+      createCard(input.value);
       input.blur();
       inputCard.classList.remove('focus');
       input.value = '';
