@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./code.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section id="main">
+        <div class="selectors">
+            <button class="selector" disabled>
+                Автоматически
+            </button>
+            <button id="lang-select" class="selector">
+                English
+                <div class="arrow"></div>
+            </button>
+            <div id="container-keeper" class="hidden">
+                <div id="selector-container">
+                </div>
+            </div>
+        </div>
+        <div class="text-zones">
+            <textarea id="input" class="text-zone" placeholder="Введите текст..."></textarea>
+            <div id="output" class="text-zone"></div>
+        </div>
+        <button id="translate">Перевести</button>
+    </section>
+</body>
+</html>

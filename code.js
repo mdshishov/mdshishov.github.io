@@ -1,0 +1,1 @@
+setTimeout(() => this, 0);
