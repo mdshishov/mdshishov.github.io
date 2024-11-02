@@ -1,0 +1,145 @@
+:root {
+    --c1: #c3dce5;
+    --c2: #a3becc;
+    --c3: #8598a6;
+    --c4: #667480;
+    --c5: #4c5359;
+    --c6: #363940;
+    --c7: #222426;
+    --c8: #ee6a7c;
+    --c9: #dd465a;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    background: none;
+    box-sizing: border-box;
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--c7);
+}
+
+body {
+    width: 100%;
+    min-width: 750px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#main {
+    width: 700px;
+}
+
+.selectors {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+.selector {
+    display: inline-block;
+    cursor: pointer;
+    height: 36px;
+    width: 100%;
+    border: 1px solid var(--c1);
+    padding-left: 13px;
+    text-align: left;
+    border-radius: 10px;
+    transition: background-color 0.5s;
+}
+.selector:disabled {
+    cursor: auto;
+}
+
+#container-keeper {
+    position: absolute;
+    top: 46px;
+    background-color: #ffffff;
+    width: 100%;
+    border: 1px solid var(--c1);
+    border-radius: 10px;
+    max-height: 226px;
+    overflow-y: scroll;
+}
+#selector-container {
+    width: 100%;
+    padding: 13px;
+    columns: 3;
+    column-gap: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.select-item {
+    background: none;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    text-align: left;
+    break-inside: avoid;
+}
+.select-item:hover {
+    color: var(--c8);
+}
+
+.text-zones {
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.text-zone {
+    border: 1px solid var(--c1);
+    border-radius: 10px;
+    height: 180px;
+    font-size: 20px;
+    padding: 17px 20px;
+    width: 30%;
+    flex-grow: 1;
+}
+
+
+#input {
+    resize: none;
+    font-weight: 500;
+}
+#input:focus {
+    outline: none;
+}
+#input::placeholder {
+    color: var(--c2);
+}
+
+#output {
+
+}
+
+#translate {
+    display: inline-block;
+    cursor: pointer;
+    height: 36px;
+    width: 100%;
+    background-color: var(--c8);
+    color: #ffffff;
+    border-radius: 10px;
+    transition: background-color 0.5s;
+}
+#translate:disabled {
+    cursor: auto;
+    background-color: var(--c1);
+}
