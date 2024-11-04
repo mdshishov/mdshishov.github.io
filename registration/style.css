@@ -1,0 +1,158 @@
+:root {
+    --c1: #c3dce5;
+    --c2: #a3becc;
+    --c3: #8598a6;
+    --c4: #667480;
+    --c5: #4c5359;
+    --c6: #363940;
+    --c7: #222426;
+    --c8: #ee6a7c;
+    --c9: #c7394c;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    box-sizing: border-box;
+    background: none;
+}
+
+body {
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--c7);
+
+    min-width: 600px;
+    min-height: 100vh;
+    padding: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #ffffff;
+}
+
+.form-container {
+    box-sizing: content-box;
+    width: 250px;
+    padding: 35px 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid var(--c1);
+    /* box-shadow: 0px 0px 20px var(--c1); */
+}
+
+.form-header {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 25px;
+
+    position: relative;
+}
+#account .form-header {
+    line-height: 1.15em;
+}
+
+.input-text {
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--c7);
+
+    display: block;
+    height: 40px;
+    width: 100%;
+    padding: 0px 40px 0px 14px;
+    margin-bottom: 10px;
+
+    border: 1px solid var(--c1);
+    border-radius: 5px;
+}
+.input-text:focus {
+    outline: 2px solid var(--c8);
+    outline-offset: -2px;
+}
+.input-text::placeholder {
+    color: var(--c2);
+}
+.input-text.error {
+    outline: 2px solid var(--c8);
+    outline-offset: -2px;
+}
+
+.button {
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--c7);
+
+    display: block;
+    height: 40px;
+    width: 100%;
+
+    border-radius: 5px;
+    box-shadow: none;
+    transition: box-shadow 0.5s;
+}
+.button:hover {
+    cursor: pointer;
+}
+
+.button.bright {
+    margin-top: 30px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: var(--c8);
+}
+.button.bright:hover {
+    box-shadow: 0px 0px 10px var(--c8);
+}
+
+.button.light {
+    border: 1px solid var(--c1);
+}
+
+#sign-in .button:first-of-type {
+    margin-bottom: 10px;
+}
+#sign-up .button:first-of-type {
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.error-message {
+    font-size: 13px;
+    line-height: 1.15em;
+    font-weight: 600;
+    color: var(--c8);
+    margin-bottom: 10px;
+}
+
+.password-area {
+    position: relative;
+}
+
+.show-password {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    background-image: url("./icons/eye.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.show-password.active {
+    background-image: url("./icons/eye-active.svg");
+}
+.show-password:hover {
+    cursor: pointer;
+}
