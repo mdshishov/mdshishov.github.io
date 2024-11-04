@@ -48,7 +48,7 @@ password2Input.addEventListener("input", () => {
 const endSignUpButton = document.getElementById("end-sign-up-button");
 endSignUpButton.addEventListener("click", endSignUp);
 const backButton = document.getElementById("back-button");
-backButton.addEventListener("click", returnToSignUp);
+backButton.addEventListener("click", returnToSignIn);
 
 const createdContainer = document.getElementById("created-message");
 const enterButton = document.getElementById("enter-button");
@@ -102,6 +102,8 @@ function hidePassword(event) {
 }
 
 function startRegistration() {
+  signUpError1.classList.add('hidden');
+  signUpError2.classList.add('hidden');
   nameInput.value = '';
   surnameInput.value = '';
   emailInput.value = '';
@@ -109,14 +111,20 @@ function startRegistration() {
   password2Input.value = '';
   signInContainer.classList.add("hidden");
   signUpContainer.classList.remove("hidden");
+  signInError1.classList.add('hidden');
+  signInError2.classList.add('hidden');
   signInPassword.value = '';
 }
 
-function returnToSignUp() {
+function returnToSignIn() {
   signUpContainer.classList.add("hidden");
   signInContainer.classList.remove("hidden");
+  signInError1.classList.add('hidden');
+  signInError2.classList.add('hidden');
 }
 function returnAfterSignUp() {
+  signInError1.classList.add('hidden');
+  signInError2.classList.add('hidden');
   signInEmail.value = emailInput.value;
   signInPassword.value = '';
   createdContainer.classList.add("hidden");
@@ -147,6 +155,8 @@ function enterAccount() {
 }
 
 function endSignUp() {
+  signUpError1.classList.add('hidden');
+  signUpError2.classList.add('hidden');
   if (
     nameInput.validity.valid &&
     surnameInput.validity.valid &&
