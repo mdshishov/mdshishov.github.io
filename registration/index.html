@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
+    <script defer src="./code.js"></script>
+  </head>
+  <body>
+    <section id="main">
+      <div id="sign-in" class="form-container">
+        <h1 class="form-header">Авторизация</h1>
+        <form id="sign-in-form" action="">
+          <div id="sign-in-error1" class="error-message hidden">Такого пользователя не существует</div>
+          <input type="email" required id="sign-in-email" class="input-text" placeholder="Введите ваш e-mail" />
+          <div id="sign-in-error2" class="error-message hidden">Неверный пароль</div>
+          <div class="password-area">
+            <input type="password" required id="sign-in-password" class="input-text" placeholder="Введите ваш пароль" />
+            <div class="show-password"></div>
+          </div>
+          <button id="sign-in-button" class="button bright">Войти</button>
+        </form>
+        <button id="sign-up-button" class="button light">Создать аккаунт</button>
+      </div>
+
+      <div id="sign-up" action="" class="form-container hidden">
+        <h1 class="form-header">Регистрация</h1>
+        <form id="sign-up-form" action="">
+          <input type="text" required id="sign-up-name" minlength="1" class="input-text" placeholder="Введите ваше имя" />
+          <input type="text" required id="sign-up-surname" minlength="1" class="input-text" placeholder="Введите вашу фамилию" />
+          <div id="sign-up-error1" class="error-message hidden">Такой пользователь уже существует</div>
+          <input type="email" required id="sign-up-email" class="input-text" placeholder="Введите ваш e-mail" />
+          <div id="sign-up-error2" class="error-message hidden">Пароли должны совпадать</div>
+          <div class="password-area">
+            <input type="password" required minlength="6" id="sign-up-password" class="input-text" placeholder="Придумайте пароль" />
+            <div class="show-password"></div>
+          </div>
+          <div class="password-area">
+            <input type="password" required minlength="6" id="sign-up-password-repeat" class="input-text" placeholder="Подтвердите пароль" />
+            <div class="show-password"></div>
+          </div>
+          <button id="end-sign-up-button" class="button bright">Создать аккаунт</button>
+        </form>
+        <button id="back-button" class="button light">Вернуться</button>
+      </div>
+
+      <div id="created-message" class="form-container hidden">
+        <h1 class="form-header">Аккаунт успешно создан!</h1>
+        <button id="enter-button" class="button bright">Войти</button>
+      </div>
+
+      <div id="account" class="form-container hidden">
+        <h1 id="account-header" class="form-header">Добрый день,<br />Иван Иванов!</h1>
+        <button id="exit-button" class="button bright">Выйти</button>
+      </div>
+    </section>
+  </body>
+</html>
