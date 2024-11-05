@@ -9,6 +9,7 @@ const arToRom = {
 }
 
 window.addEventListener('load', render);
+window.addEventListener('hashchange', render);
 
 async function getFilmsData() {
   const response = await fetch('https://www.swapi.tech/api/films', { method: "GET" });
@@ -17,6 +18,11 @@ async function getFilmsData() {
 }
 async function getFilmData(filmId) {
   const response = await fetch(`https://www.swapi.tech/api/films/${filmId}`, { method: "GET" });
+  const result = await response.json();
+  return result.result;
+}
+async function getDataFromUrl(url) {
+  const response = await fetch(url, { method: "GET" });
   const result = await response.json();
   return result.result;
 }
@@ -41,7 +47,7 @@ async function showMain() {
       const filmName = `Star Wars. Episode ${arToRom[epId]}: ${title}`;
 
       const link = document.createElement('a');
-      link.href = `./films/${filmId}`;
+      link.href = `#/films/${filmId}`;
       link.textContent = filmName;
       link.addEventListener('click', openFilmPage);
 
@@ -51,29 +57,67 @@ async function showMain() {
       list.append(listItem);
     })
 }
-//showMain();
 
 async function showFilmPage(filmId) {
   container.innerHTML = '';
 
+  const film = await getFilmData(filmId);
+  const epId = film.properties.episode_id;
+  const title = film.properties.title;
+  const filmName = `Star Wars. Episode ${arToRom[epId]}: ${title}`;
 
+  const header = document.createElement('h1');
+  header.textContent = filmName;
+  container.append(header);
+
+  const back = document.createElement('a');
+  back.href = './';
+  back.textContent = 'Back to episodes';
+  container.append(back);
+
+  const description = document.createElement('p');
+  description.textContent = film.properties.opening_crawl;
+  container.append(description);
+
+  const planetsHeader = document.createElement('h2');
+  planetsHeader.textContent = 'Planets';
+  const planetsList = document.createElement('ul');
+  const planets = film.properties.planets;
+  for (const url of planets){
+    const planet = await getDataFromUrl(url);
+    const listItem = document.createElement('li');
+    listItem.textContent = planet.properties.name;
+    planetsList.append(listItem);
+  }
+  container.append(planetsHeader);
+  container.append(planetsList);
+
+  const speciesHeader = document.createElement('h2');
+  speciesHeader.textContent = 'Species';
+  const speciesList = document.createElement('ul');
+  const species = film.properties.species;
+  for (const url of species){
+    const specie = await getDataFromUrl(url);
+    const listItem = document.createElement('li');
+    listItem.textContent = specie.properties.name;
+    speciesList.append(listItem);
+  }
+  container.append(speciesHeader);
+  container.append(speciesList);
 }
 
 function render() {
-  const url = new URL(location.href);
-  const path = url.pathname;
-  if (!path.split('/').includes('films')) {
+  const url = location.href;
+
+  if (!url.includes('#')) {
     showMain();
   } else {
-    showFilmPage(path.split('/').at(-1));
+    showFilmPage(url.split('/').at(-1));
   }; 
 }
-
-// document.querySelectorAll('a').forEach((elem) => elem.addEventListener('click',(e) =>{e.preventDefault();
-//     console.log('yes')
-// history.pushState({},'', e.target.href)}));
 
 function openFilmPage(event) {
   event.preventDefault();
   history.pushState({},'', event.target.href);
+  render();
 }
