@@ -26,6 +26,12 @@ async function getDataFromUrl(url) {
   const result = await response.json();
   return result.result;
 }
+async function addListItem(target, url) {
+  const item = await getDataFromUrl(url);
+  const listItem = document.createElement('li');
+  listItem.textContent = item.properties.name;
+  target.append(listItem);
+}
 
 async function showMain() {
   container.innerHTML = '';
@@ -81,28 +87,22 @@ async function showFilmPage(filmId) {
 
   const planetsHeader = document.createElement('h2');
   planetsHeader.textContent = 'Planets';
+  container.append(planetsHeader);
   const planetsList = document.createElement('ul');
   const planets = film.properties.planets;
-  for (const url of planets){
-    const planet = await getDataFromUrl(url);
-    const listItem = document.createElement('li');
-    listItem.textContent = planet.properties.name;
-    planetsList.append(listItem);
-  }
-  container.append(planetsHeader);
+  planets.forEach((url) => {
+    addListItem(planetsList, url);
+  });
   container.append(planetsList);
 
   const speciesHeader = document.createElement('h2');
   speciesHeader.textContent = 'Species';
   const speciesList = document.createElement('ul');
   const species = film.properties.species;
-  for (const url of species){
-    const specie = await getDataFromUrl(url);
-    const listItem = document.createElement('li');
-    listItem.textContent = specie.properties.name;
-    speciesList.append(listItem);
-  }
   container.append(speciesHeader);
+  species.forEach((url) => {
+    addListItem(speciesList, url);
+  });
   container.append(speciesList);
 }
 
