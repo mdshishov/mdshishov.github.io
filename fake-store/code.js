@@ -38,6 +38,9 @@ let counter = 1;
 let fData = [];
 
 async function showPage(category) {
+  hideButton.classList.add('hidden');
+  moreButton.classList.remove('hidden');
+
   [...document.getElementsByClassName('menu-link')].forEach((link) => {
     link.classList.remove('active');
   })
@@ -81,9 +84,10 @@ function render() {
 }
 
 function showMore() {
-  for (let i = 0; i < 4 && counter < fData.length; i += 1)
-  container.append(createCard(fData[counter - 1].image, fData[counter - 1].text, fData[counter - 1].price));
-  counter += 1;
+  for (let i = 0; i < 4 && counter < fData.length; i += 1) {
+    container.append(createCard(fData[counter - 1].image, fData[counter - 1].text, fData[counter - 1].price));
+    counter += 1;
+  }
 
   if (counter >= fData.length) {
     moreButton.classList.add('hidden');
