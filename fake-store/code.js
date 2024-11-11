@@ -67,7 +67,12 @@ async function showPage(category) {
       break;
   }
 
-  counter = 1;
+  console.log(fData);
+  if (fData.length <= 4) {
+    moreButton.classList.add('hidden');
+  }
+
+  counter = 0;
 
   container.innerHTML = '';
 
@@ -84,11 +89,11 @@ function render() {
 
 function showMore() {
   for (let i = 0; i < 4 && counter < fData.length; i += 1) {
-    container.append(createCard(fData[counter - 1].image, fData[counter - 1].text, fData[counter - 1].price));
+    container.append(createCard(fData[counter].image, fData[counter].text, fData[counter].price));
     counter += 1;
   }
 
-  if (counter >= fData.length) {
+  if (counter >= fData.length - 1) {
     moreButton.classList.add('hidden');
     hideButton.classList.remove('hidden');
   }
@@ -102,9 +107,8 @@ function hide() {
     const card = cards[i];
     card.remove()
   }
-  counter = 5;
-  moreButton.classList.remove('hidden');
+  counter = 4;
   hideButton.classList.add('hidden');
-
+  moreButton.classList.remove('hidden');
 }
 hideButton.addEventListener('click', hide);
