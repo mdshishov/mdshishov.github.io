@@ -1,0 +1,121 @@
+:root {
+    --light-gray: #f2f2f2;
+    --border-gray: #dcdcdc;
+    --text-color: #212121;
+    --text-light: #b3b3b3;
+    --bright-color: #4285f4;
+    --bright-color-hover: #6fa2f5;
+    --bright-color-click: #3974d4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+    font-family: "Manrope", sans-serif;
+    color: var(--text-color);
+}
+
+body {
+    min-width: 100vw;
+    color: var(--text-color);
+}
+
+#main {
+    width: 630px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#menu {
+    margin-bottom: 30px;
+}
+
+.menu-link {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    position: relative;
+
+    margin-right: 10px;
+}
+.menu-link:hover {
+    color: var(--bright-color);
+}
+.menu-link.active {
+    color: var(--bright-color);
+}
+
+.menu-link .line {
+    position: absolute;
+    bottom: -5px;
+    height: 2px;
+    width: 0;
+    transition: width 0.3s;
+    background-color: var(--bright-color);
+}
+.menu-link:hover .line{
+    width: 100%;
+}
+.menu-link.active .line{
+    width: 100%;
+}
+
+#cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.card {
+    width: 150px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: var(--light-gray);
+}
+
+.card-price {
+    font-size: 14px;
+    line-height: 1.1em;
+    margin-bottom: 5px;
+    color: var(--text-light);
+}
+
+.card-text {
+    width: 100%;
+    text-overflow: ellipsis;
+    line-height: 1.1em;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.button {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px 20px;
+    color: var(--bright-color);
+    background: none;
+    border-radius: 5px;
+    border: 2px solid var(--bright-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+.button:hover {
+    cursor: pointer;
+    color: #ffffff;
+    background-color: var(--bright-color);
+}
+
+.hidden {
+    display: none;
+}
