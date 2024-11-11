@@ -9,7 +9,7 @@ window.addEventListener('hashchange', render);
 const container = document.getElementById('cards-container');
 const moreButton = document.getElementById('more');
 const hideButton = document.getElementById('hide');
-const addCard = document.getElementById('add-card');
+const addButton = document.getElementById('add');
 
 function createCard(imageSourse, textValue, priceValue = null) {
   const card = document.createElement('div');
@@ -79,7 +79,7 @@ async function showPage(category) {
   counter = 0;
 
   [...container.getElementsByClassName('card')].forEach((card) => {
-    if (card.id !== addCard.id) card.remove();
+    if (card.id !== 'add-card') card.remove();
   })
 
   for (let i = 0; i < 3; i += 1) {
@@ -118,3 +118,20 @@ function hide() {
   moreButton.classList.remove('hidden');
 }
 hideButton.addEventListener('click', hide);
+
+async function addItem() {
+  await fetch('https://api.escuelajs.co/api/v1/products/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8'
+    },
+    body: JSON.stringify({
+      title: 'Пытаюсь добавиить',
+      price: 20,
+      description: "A description",
+      categoryId: 1,
+      images: ["https://placeimg.com/640/480/any"]
+    })
+  })
+}
+addButton.addEventListener('click', addItem);
