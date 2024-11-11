@@ -51,7 +51,6 @@ async function showPage(category) {
 
   const response  = await fetch(`https://api.escuelajs.co/api/v1/${category}`, { method: "GET" });
   const data = await response.json();
-  console.log(data);
 
   fData = []
   switch (category) {
