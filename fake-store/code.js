@@ -9,6 +9,7 @@ window.addEventListener('hashchange', render);
 const container = document.getElementById('cards-container');
 const moreButton = document.getElementById('more');
 const hideButton = document.getElementById('hide');
+const addCard = document.getElementById('add-card');
 
 function createCard(imageSourse, textValue, priceValue = null) {
   const card = document.createElement('div');
@@ -34,6 +35,7 @@ function createCard(imageSourse, textValue, priceValue = null) {
 
   return card;
 }
+
 let counter = 1;
 let fData = [];
 
@@ -52,16 +54,18 @@ async function showPage(category) {
   const response  = await fetch(`https://api.escuelajs.co/api/v1/${category}`, { method: "GET" });
   const data = await response.json();
 
+  const correctImage = (str) => str.startsWith('[') ? str.slice(2, -2) : str;
+
   fData = []
   switch (category) {
     case "products":
-      fData = data.map(({ title, images, price }) => ({ text: title, image: images[0], price: price }));
+      fData = data.map(({ title, images, price }) => ({ text: title, image: correctImage(images[0]), price: price }));
       break;
     case "categories":
-        fData = data.map(({ name, image }) => ({ text: name, image: image, price: null }));
+        fData = data.map(({ name, image }) => ({ text: name, image: correctImage(image), price: null }));
         break;
         case "users":
-          fData = data.map(({ name, avatar }) => ({ text: name, image: avatar, price: null }));
+          fData = data.map(({ name, avatar }) => ({ text: name, image: correctImage(avatar), price: null }));
           break;
     default:
       break;
@@ -74,9 +78,11 @@ async function showPage(category) {
 
   counter = 0;
 
-  container.innerHTML = '';
+  [...container.getElementsByClassName('card')].forEach((card) => {
+    if (card.id !== addCard.id) card.remove();
+  })
 
-  for (let i = 0; i < 4; i += 1) {
+  for (let i = 0; i < 3; i += 1) {
     container.append(createCard(fData[i].image, fData[i].text, fData[i].price));
     counter += 1;
   }
