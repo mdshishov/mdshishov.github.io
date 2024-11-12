@@ -153,7 +153,6 @@ function showAddForm() {
       button.id = 'create';
       button.textContent = 'Create category';
       button.classList.add('button');
-      //button.addEventListener('click', addItem);
 
       form.append(nameInput, imageInput, button);
       break;
@@ -169,7 +168,6 @@ function showAddForm() {
 
 function hideAddForm() {
   document.getElementById('add').classList.remove('active');
-  document.getElementById('create').removeEventListener('click', addItem);
   form.classList.add('hidden');
   blackout.classList.add('hidden');
 }
