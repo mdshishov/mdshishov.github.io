@@ -128,6 +128,12 @@ function showAddForm() {
   const category = location.href.split('#')[1].slice(1);
   form.innerHTML = '';
 
+  const closeButton = document.createElement('button');
+  closeButton.type = 'button';
+  closeButton.id = 'close-form';
+  closeButton.addEventListener('click', hideAddForm);
+  form.append(closeButton);
+
   const header = document.createElement('h1');
   header.classList.add('form-header');
   form.append(header)
@@ -163,11 +169,14 @@ function showAddForm() {
   }
   blackout.classList.remove('hidden');
   form.classList.remove('hidden');
-  document.getElementById('add').classList.add('active');
+  addButton.disabled = true;
+  addButton.classList.add('active');
 }
 
 function hideAddForm() {
-  document.getElementById('add').classList.remove('active');
+  document.getElementById('close-form').removeEventListener('click', hideAddForm);
+  addButton.classList.remove('active');
+  addButton.disabled = false;
   form.classList.add('hidden');
   blackout.classList.add('hidden');
 }
