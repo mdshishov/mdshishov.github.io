@@ -33,20 +33,24 @@
     <div id="cards-container">
         <div id="add-card" class="card">
             <button id="add" class="card-image">
-                <div>
-                    <div class="add-icon">
-                        <div class="vertical"></div>
-                        <div class="horizontal"></div>
-                    </div>
-                    <br>
-                    New
+                <div class="add-icon">
                 </div>
-            </div>
+                <br>
+                New
+            </button>
+            <form id="add-form" class="hidden">
+                <h1 class="form-header">New category</h1>
+                <input type="text" class="text-input" placeholder="Enter category name" required>
+                <input type="text" class="text-input" placeholder="Enter category name" required>
+                
+                <button id="create" class="button">Create</button>
+            </form>
         </div>
     </div>
 
     <button id="more" class="button">Show more</button>
     <button id="hide" class="button hidden">Hide all</button>
     </main>
+    <div id="blackout" class="hidden"></div>
 </body>
 </html>
