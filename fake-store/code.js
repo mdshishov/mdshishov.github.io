@@ -119,19 +119,92 @@ function hide() {
 }
 hideButton.addEventListener('click', hide);
 
-async function addItem() {
-  await fetch('https://api.escuelajs.co/api/v1/products/', {
+const form = document.getElementById('add-form');
+form.addEventListener('submit', addItem);
+const blackout = document.getElementById('blackout');
+blackout.addEventListener('click', hideAddForm);
+
+function showAddForm() {
+  const category = location.href.split('#')[1].slice(1);
+  form.innerHTML = '';
+
+  const header = document.createElement('h1');
+  header.classList.add('form-header');
+  form.append(header)
+  switch (category) {
+    case "categories":
+      header.textContent = 'New category';
+
+      const nameInput = document.createElement('input');
+      nameInput.id = 'name';
+      nameInput.classList.add('text-input');
+      nameInput.type = 'text';
+      nameInput.required = true;
+      nameInput.placeholder = 'Enter category name';
+
+      const imageInput = document.createElement('input');
+      imageInput.id = 'image';
+      imageInput.classList.add('text-input');
+      imageInput.type = 'text';
+      imageInput.required = true;
+      imageInput.placeholder = 'Enter image link';
+
+      const button = document.createElement('button');
+      button.id = 'create';
+      button.textContent = 'Create category';
+      button.classList.add('button');
+      //button.addEventListener('click', addItem);
+
+      form.append(nameInput, imageInput, button);
+      break;
+  
+    default:
+      header.textContent = 'Not aviable';
+      break;
+  }
+  blackout.classList.remove('hidden');
+  form.classList.remove('hidden');
+  document.getElementById('add').classList.add('active');
+}
+
+function hideAddForm() {
+  document.getElementById('add').classList.remove('active');
+  document.getElementById('create').removeEventListener('click', addItem);
+  form.classList.add('hidden');
+  blackout.classList.add('hidden');
+}
+
+async function addItem(event) {
+  event.preventDefault();
+  document.getElementById('create').disabled = true;
+
+  const category = location.href.split('#')[1].slice(1);
+  const pattern = {
+    products: {
+
+    },
+    categories: {
+      name: '',
+      image: '',
+    },
+    users: {
+
+    },
+  }
+
+  const body = {};
+  Object.keys(pattern[category]).forEach((key) => {
+    body[key] = document.getElementById(key).value;
+  })
+
+  await fetch(`https://api.escuelajs.co/api/v1/${category}/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
     },
-    body: JSON.stringify({
-      title: 'Пытаюсь добавиить',
-      price: 20,
-      description: "A description",
-      categoryId: 1,
-      images: ["https://placeimg.com/640/480/any"]
-    })
+    body: JSON.stringify(body),
   })
+
+  hideAddForm();
 }
-addButton.addEventListener('click', addItem);
+addButton.addEventListener('click', showAddForm);
