@@ -4,4 +4,51 @@
   border: none;
   outline: none;
 }
+#app {
+  position: relative;
+}
 
+.post {
+  position: absolute;
+  box-sizing: border-box;
+  background-color: aqua;
+  padding: 5px;
+}
+
+.post__header {
+  width: 100%;
+  background-color: aquamarine;
+  position: relative;
+}
+
+.post__btn-close {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+}
+
+.post__body {
+  padding: 10px;
+}
+
+.post__body__title {
+  font-size: 20px;
+}
+
+.post__body__text {
+  font-size: 14px;
+}
+
+.post__body__links {
+
+}
+.post__body__link {
+}
+
+.post__body__link > span {
+  color: transparent;
+}
+.post__body__link:hover > span {
+  color: #000000;
+}

@@ -7,7 +7,13 @@ async function app() {
     return;
   }
 
-  console.log(posts);
+  const container = document.getElementById('app');
+  if (!container) {
+    showErrorMessage();
+    return;
+  }
+
+  renderStartState();
 
   const uiState = {
     positions: [],
@@ -17,16 +23,40 @@ async function app() {
   
   function generateStartPosition() {}
   
-  function renderStartState() {}
+  function renderStartState() {
+    posts.forEach((post) => {
+      postEl = createPostEl(post);
+      // функция генерации расположения
+      container.append(postEl);
+    })
+  }
   
   function createPostEl(postData) {
     const postEl = document.createElement('div');
     postEl.classList.add('post');
   
-    const header = document.createElement('div');
-    header.classList.add('post__header');
-    header.textContent = postData.header;
+    const postHeader = document.createElement('div');
+    postHeader.classList.add('post__header');
+    postHeader.textContent = postData.header;
+
+    const closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.addEventListener('click', () => {
+      postEl.remove();
+    })
+
+    postHeader.append(closeBtn);
+    postEl.append(postHeader);
+
+    const postBody = document.createElement('div');
+    closeBtn.classList.add('post__body');
+
+    const title = document.createElement('h2');
+
+    postEl.append(postBody);
+    return postEl;
   }
+
   function showErrorMessage() {}
 }
 

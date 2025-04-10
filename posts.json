@@ -5,6 +5,11 @@
     "title": "Fff",
     "description": "ffff",
     "tag": "Онлайн",
-    "link": "./fff/index.html"
+    "links": [
+      {
+        "text": "Онлайн",
+        "url": "./"
+      }
+    ]
   }
 ]
