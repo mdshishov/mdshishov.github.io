@@ -52,8 +52,28 @@ async function app() {
     closeBtn.classList.add('post__body');
 
     const title = document.createElement('h2');
+    title.classList.add('post__body__title');
 
+    const text = document.createElement('p');
+    text.classList.add('post__body__text');
+
+    const ul = document.createElement('ul');
+    ul.classList.add('post__body__links');
+
+    const liEls = postData.links.map(({ text, url }) => {
+      const li = document.createElement('li');
+      li.classList.add('post__body__link');
+      const a = document.createElement('a');
+      a.url = url;
+      a.textContent = text;
+      li.append(a);
+      return li;
+    });
+
+    ul.append(...liEls);
+    postBody.append(title, text, ul);
     postEl.append(postBody);
+  
     return postEl;
   }
 
