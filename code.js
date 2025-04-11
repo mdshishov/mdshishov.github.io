@@ -41,6 +41,7 @@ async function app() {
 
     const closeBtn = document.createElement('button');
     closeBtn.type = 'button';
+    closeBtn.classList.add('post__btn-close');
     closeBtn.addEventListener('click', () => {
       postEl.remove();
     })
@@ -49,29 +50,31 @@ async function app() {
     postEl.append(postHeader);
 
     const postBody = document.createElement('div');
-    closeBtn.classList.add('post__body');
+    postBody.classList.add('post__body');
 
     const title = document.createElement('h2');
     title.classList.add('post__body__title');
+    title.textContent = postData.title;
 
-    const text = document.createElement('p');
-    text.classList.add('post__body__text');
+    const description = document.createElement('p');
+    description.classList.add('post__body__text');
+    description.textContent = postData.description;
 
     const ul = document.createElement('ul');
     ul.classList.add('post__body__links');
 
-    const liEls = postData.links.map(({ text, url }) => {
+    const liEls = postData.links.map((linkData) => {
       const li = document.createElement('li');
       li.classList.add('post__body__link');
       const a = document.createElement('a');
-      a.url = url;
-      a.textContent = text;
+      a.url = linkData.url;
+      a.textContent = '> ' + linkData.text;
       li.append(a);
       return li;
     });
 
     ul.append(...liEls);
-    postBody.append(title, text, ul);
+    postBody.append(title, description, ul);
     postEl.append(postBody);
   
     return postEl;

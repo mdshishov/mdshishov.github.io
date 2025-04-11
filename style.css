@@ -1,9 +1,53 @@
+:root {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+
+@font-face {
+  font-family: "Consolas";
+  src: url("./src/fonts/consola") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: "Consolab";
+  src: url("./src/fonts/consolab") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Consolas";
+  src: url("./src/fonts/consolai") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+
+@font-face {
+  font-family: "Consolab";
+  src: url("./src/fonts/consolaz") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+
 * {
   margin: 0px;
   padding: 0px;
   border: none;
   outline: none;
+  text-decoration: none;
 }
+
+body {
+  font-family: "Consola", monospace;
+  font-size: 16px;
+  line-height: 1.12;
+  color: var(--color2);
+}
+
 #app {
   position: relative;
 }
@@ -11,18 +55,24 @@
 .post {
   position: absolute;
   box-sizing: border-box;
-  background-color: aqua;
+  background-color: var(--color1);
   padding: 5px;
+  border: 2px solid var(--color2);
+  box-shadow: 5px 5px var(--color2);
+  width: 300px;
 }
 
 .post__header {
   width: 100%;
   background-color: aquamarine;
   position: relative;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .post__btn-close {
   position: absolute;
+  right: 0px;
   width: 10px;
   height: 10px;
   background-color: red;
@@ -30,6 +80,7 @@
 
 .post__body {
   padding: 10px;
+  border: 2px solid var(--color2);
 }
 
 .post__body__title {
@@ -37,18 +88,14 @@
 }
 
 .post__body__text {
-  font-size: 14px;
 }
 
 .post__body__links {
-
+  list-style: none;
 }
 .post__body__link {
+  font-weight: bold;
 }
-
-.post__body__link > span {
-  color: transparent;
-}
-.post__body__link:hover > span {
-  color: #000000;
+.post__body__link:hover {
+  cursor: pointer;
 }
