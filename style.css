@@ -95,7 +95,5 @@ body {
 }
 .post__body__link {
   font-weight: bold;
-}
-.post__body__link:hover {
   cursor: pointer;
 }
