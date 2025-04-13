@@ -35,80 +35,159 @@ async function app() {
       postEl.style.zIndex = i;
       container.append(postEl);
     });
+
+    const titlePostEl = createTitlePostEl();
+    titlePostEl.style.zIndex = posts.length;
+    container.append(titlePostEl);
+
+    // Если ранее был отказ от показа подсказки, то окно не показываем
+    if (!localStorage.getItem('noHint')) {
+      const hintPostEl = createHintPostEl();
+      hintPostEl.style.zIndex = posts.length + 1;
+      container.append(hintPostEl);
+    }
   }
-  
-  function createPostEl(postData) {
-    const postEl = document.createElement('div');
-    postEl.classList.add('post');
+}
 
-    // Генерируем случайную ширину
-    const postWidth = getRandom(250, 350);
-    postEl.style.width = `${postWidth}px`;
-    // Генерируем случайное расположение на странице
-    const topPos = 100 * (getRandom(0, Math.max(window.innerHeight - 200, 0)) / window.innerHeight);
-    const leftPos = 100 * (getRandom(0, Math.max(window.innerWidth - postWidth, 0)) / window.innerWidth);
-    postEl.style.top = `${topPos}vh`;
-    postEl.style.left = `${leftPos}vw`;
-    // Выводим пост на передний план при клике
-    postEl.addEventListener('mousedown', () => putAboveAll(postEl));
-    postEl.addEventListener('touchstart', () => putAboveAll(postEl));
+function createEmptyPostEl(headerText = '') {
+  const postEl = document.createElement('div');
+  postEl.classList.add('post');
 
-    const postHeader = document.createElement('div');
-    postHeader.classList.add('post__header');
-    postHeader.textContent = postData.header;
+  // Выводим пост на передний план при клике
+  postEl.addEventListener('mousedown', () => putAboveAll(postEl));
+  postEl.addEventListener('touchstart', () => putAboveAll(postEl));
 
-    const closeBtn = document.createElement('button');
-    closeBtn.type = 'button';
-    closeBtn.classList.add('post__btn-close');
-    closeBtn.textContent='×';
-    closeBtn.addEventListener('click', () => {
-      postEl.remove();
+  const postHeader = document.createElement('div');
+  postHeader.classList.add('post__header');
+  postHeader.textContent = headerText;
+
+  const closeBtn = document.createElement('button');
+  closeBtn.type = 'button';
+  closeBtn.classList.add('post__btn-close');
+  closeBtn.textContent='×';
+  closeBtn.addEventListener('click', () => {
+    postEl.remove();
+  })
+
+  postHeader.append(closeBtn);
+  postEl.append(postHeader);
+
+  return postEl;
+}
+
+function createPostEl(postData) {
+  const postEl = createEmptyPostEl(postData.header);
+
+  // Генерируем случайную ширину
+  const postWidth = getRandom(250, 350);
+  postEl.style.width = `${postWidth}px`;
+  // Генерируем случайное расположение на странице
+  const topPos = 100 * (getRandom(0, Math.max(window.innerHeight - 250, 0)) / window.innerHeight);
+  const leftPos = 100 * (getRandom(0, Math.max(window.innerWidth - postWidth, 0)) / window.innerWidth);
+  postEl.style.top = `${topPos}vh`;
+  postEl.style.left = `${leftPos}vw`;
+
+  const postBody = document.createElement('div');
+  postBody.classList.add('post__body');
+
+  const title = document.createElement('h2');
+  title.classList.add('post__body__title');
+  title.textContent = postData.title;
+
+  const description = document.createElement('p');
+  description.classList.add('post__body__text');
+  description.textContent = postData.description;
+
+  const ul = document.createElement('ul');
+  ul.classList.add('post__body__links-ul');
+
+  const liEls = postData.links.map((linkData) => {
+    const li = document.createElement('li');
+    li.classList.add('post__body__link-li');
+    const a = document.createElement('a');
+    a.classList.add('post__body__link');
+    a.addEventListener('click', (event) => {
+      event.preventDefault;
+      window.open(linkData.url).focus();
     })
+    a.textContent = '> ' + linkData.text;
+    li.append(a);
+    return li;
+  });
 
-    postHeader.append(closeBtn);
-    postEl.append(postHeader);
+  ul.append(...liEls);
+  postBody.append(title, description, ul);
+  postEl.append(postBody);
 
-    const postBody = document.createElement('div');
-    postBody.classList.add('post__body');
+  return postEl;
+}
 
-    const title = document.createElement('h2');
-    title.classList.add('post__body__title');
-    title.textContent = postData.title;
+function createTitlePostEl() {
+  const postEl = createEmptyPostEl('title');
 
-    const description = document.createElement('p');
-    description.classList.add('post__body__text');
-    description.textContent = postData.description;
+  const topPos = 100 * ((Math.max(0, window.innerHeight - 160) / 2) / window.innerHeight);
+  const leftPos = 100 * ((Math.max(0, window.innerWidth - 580) / 2) / window.innerWidth);
+  postEl.style.top = `${topPos}vh`;
+  postEl.style.left = `${leftPos}vw`;
+  // Выводим пост на передний план при клике
+  postEl.addEventListener('mousedown', () => putAboveAll(postEl));
+  postEl.addEventListener('touchstart', () => putAboveAll(postEl));
 
-    const ul = document.createElement('ul');
-    ul.classList.add('post__body__links-ul');
+  const postBody = document.createElement('div');
+  postBody.classList.add('post__body', 'post__body_big-title');
 
-    const liEls = postData.links.map((linkData) => {
-      const li = document.createElement('li');
-      li.classList.add('post__body__link-li');
-      const a = document.createElement('a');
-      a.classList.add('post__body__link');
-      a.addEventListener('click', (event) => {
-        event.preventDefault;
-        window.open(linkData.url).focus();
-      })
-      a.textContent = '> ' + linkData.text;
-      li.append(a);
-      return li;
-    });
+  const title = document.createElement('h1');
+  title.classList.add('post__body__title_big');
+  title.textContent = '>study_projects';
+  const span = document.createElement('span');
+  span.textContent = '█';
+  span.classList.add('blink');
+  title.append(span);
 
-    ul.append(...liEls);
-    postBody.append(title, description, ul);
-    postEl.append(postBody);
-  
-    return postEl;
-  }
+  postBody.append(title);
+  postEl.append(postBody);
 
-  function showErrorMessage() {
-    const errorEl = document.createElement('div');
-    errorEl.classList.add('error');
-    errorEl.textContent = 'Упс, что-то пошло не так. Пожалуйста, перезагрузите страницу.';
-    document.body.append(errorEl);
-  }
+  return postEl;
+}
+
+function createHintPostEl() {
+  const postEl = createEmptyPostEl('hint');
+
+  postEl.style.width = '230px';
+  const topPos = 100 * (getRandom(0, Math.max(window.innerHeight - 230, 0)) / window.innerHeight);
+  const leftPos = 100 * (getRandom(0, Math.max(window.innerWidth - 230, 0)) / window.innerWidth);
+  postEl.style.top = `${topPos}vh`;
+  postEl.style.left = `${leftPos}vw`;
+  // Выводим пост на передний план при клике
+  postEl.addEventListener('mousedown', () => putAboveAll(postEl));
+  postEl.addEventListener('touchstart', () => putAboveAll(postEl));
+
+  const postBody = document.createElement('div');
+  postBody.classList.add('post__body', 'post__body_no-title');
+
+  const text = document.createElement('p');
+  text.classList.add('post__body__text');
+  text.innerHTML = '<b>Подсказка:</b> «окна» можно перемещать (за верхнюю часть) и закрывать (x).'
+
+  const btn = document.createElement('button');
+  btn.innerHTML = '> Закрыть и больше<br/>не показывать'
+  btn.classList.add('post__body__btn');
+  btn.addEventListener('click', () => {
+    localStorage.setItem('noHint', 'true');
+    postEl.remove();
+  })
+
+  postBody.append(text, btn);
+  postEl.append(postBody);
+
+  return postEl;
+}
+
+function showErrorMessage() {
+  const errorEl = document.createElement('div');
+  errorEl.classList.add('error');
+  errorEl.textContent = 'Упс, что-то пошло не так. Пожалуйста, перезагрузите страницу.';
+  document.body.append(errorEl);
 }
 
 function putAboveAll(postEl) {

@@ -104,6 +104,38 @@ body {
   border: 2px solid var(--color2);
 }
 
+.post__body_no-title {
+  padding-top: 20px;
+  background-color: var(--color2);
+  color: var(--color1);
+}
+
+.post__body_big-title {
+  background-color: var(--color2);
+  padding: 30px 40px;
+  color: var(--color1);
+}
+
+.post__body__title_big {
+  font-size: 56px;
+}
+
+.post__body__btn {
+  cursor: pointer;
+
+  background-color: var(--color2);
+
+  font-family: "Consola", monospace;
+  font-size: 16px;
+  line-height: 1.12;
+  font-weight: bold;
+  text-align: left;
+  color: var(--color1);
+}
+.post__body__btn:hover {
+  text-decoration: underline;
+}
+
 .post__body__title {
   font-size: 24px;
 
@@ -147,3 +179,12 @@ body {
   font-weight: bold;
 }
 
+@keyframes animateBlinking {
+  50% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: animateBlinking 1s step-start infinite;
+}
