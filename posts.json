@@ -1,13 +1,65 @@
 [
   {
     "id": 1,
-    "header": "card-game",
-    "title": "Игра в пары",
-    "description": "Небольшая игра, требующая от игрока найти все пары для перевёрнутых карточек за отведённое время.",
+    "header": "registration-form",
+    "title": "Форма регистрации",
+    "description": "Форма регистрации с мгновенной верификацией и последующей возможностью авторизации.",
     "links": [
       {
         "text": "Попробовать онлайн",
-        "url": "./"
+        "url": "./projects/registration-form"
+      },
+      {
+        "text": "Git-репозиторий",
+        "url": "https://github.com/mdshishov/mdshishov.github.io/tree/main/projects/registration-form"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "header": "todo-list",
+    "title": "Список дел",
+    "description": "Мини-приложение, позволяющее добавлять и удалять заметки. Отрабатывалось хранение данных в LocalStorage.",
+    "links": [
+      {
+        "text": "Попробовать онлайн",
+        "url": "./projects/todo-list"
+      },
+      {
+        "text": "Git-репозиторий",
+        "url": "https://github.com/mdshishov/mdshishov.github.io/tree/main/projects/todo-list"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "header": "card-game",
+    "title": "Игра в пары",
+    "description": "Небольшая игра, требующая от игрока найти все пары карточек за отведённое время.",
+    "links": [
+      {
+        "text": "Попробовать онлайн",
+        "url": "./projects/card-game"
+      },
+      {
+        "text": "Git-репозиторий",
+        "url": "https://github.com/mdshishov/mdshishov.github.io/tree/main/projects/card-game"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "header": "fake-store",
+    "title": "Fake Store API",
+    "description": "SPA, позволяющее пользователю просматривать существующие позиции и добавлять новые. Работа с GET и POST-запросами.",
+    "links": [
+      {
+        "text": "Попробовать онлайн",
+        "url": "./projects/fake-store"
+      },
+      {
+        "text": "Git-репозиторий",
+        "url": "https://github.com/mdshishov/mdshishov.github.io/tree/main/projects/fake-store"
       }
     ]
   }

@@ -9,23 +9,18 @@
   font-weight: normal;
   font-style: normal;
 }
-
-
 @font-face {
   font-family: "Consolab";
   src: url("./src/fonts/consolab") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Consolas";
   src: url("./src/fonts/consolai") format("truetype");
   font-weight: normal;
   font-style: italic;
 }
-
-
 @font-face {
   font-family: "Consolab";
   src: url("./src/fonts/consolaz") format("truetype");
@@ -39,6 +34,7 @@
   border: none;
   outline: none;
   text-decoration: none;
+  box-sizing: border-box;
 }
 
 body {
@@ -46,6 +42,7 @@ body {
   font-size: 16px;
   line-height: 1.12;
   color: var(--color2);
+  overflow: hidden;
 }
 
 #app {
@@ -54,46 +51,99 @@ body {
 
 .post {
   position: absolute;
-  box-sizing: border-box;
-  background-color: var(--color1);
-  padding: 5px;
+
+  padding: 3px;
   border: 2px solid var(--color2);
+
+  background-color: var(--color1);
   box-shadow: 5px 5px var(--color2);
-  width: 300px;
 }
 
 .post__header {
-  width: 100%;
-  background-color: aquamarine;
   position: relative;
+  width: 100%;
+  height: 23px;
+  padding-left: 6px;
+  padding-right: 23px;
+
+  cursor: move;
+
+  overflow: hidden;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+
   font-weight: bold;
   font-size: 14px;
+  line-height: 20px;
 }
 
 .post__btn-close {
   position: absolute;
   right: 0px;
-  width: 10px;
-  height: 10px;
-  background-color: red;
+  top: 0px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color2);
+
+  cursor: pointer;
+
+  font-size: 24px;
+  line-height: 18px;
+  color: var(--color2);
+
+  background-color: var(--color1);
+}
+.post__btn-close:hover {
+  color: var(--color1);
+
+  background-color: var(--color2);
 }
 
 .post__body {
-  padding: 10px;
+  padding: 20px 24px 21px 24px;
   border: 2px solid var(--color2);
 }
 
 .post__body__title {
-  font-size: 20px;
+  font-size: 24px;
+
+  margin-bottom: 15px;
 }
 
 .post__body__text {
+  margin-bottom: 18px;
 }
 
-.post__body__links {
+.post__body__links-ul {
   list-style: none;
 }
-.post__body__link {
-  font-weight: bold;
-  cursor: pointer;
+
+.post__body__link-li {
 }
+
+.post__body__link {
+  cursor: pointer;
+
+  font-weight: bold;
+  color: var(--color2);
+}
+.post__body__link:hover {
+  text-decoration: underline;
+}
+.post__body__link:visited {
+  color: var(--color2);
+}
+
+.error {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  padding: 10px;
+  z-index: 1000;
+
+  background-color: #d13631;
+
+  color: var(--color1);
+  font-weight: bold;
+}
+
