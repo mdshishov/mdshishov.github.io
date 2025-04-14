@@ -125,13 +125,11 @@ function createPostEl(postData) {
 function createTitlePostEl() {
   const postEl = createEmptyPostEl('title');
 
+  // Генерируем случайное расположение на странице
   const topPos = 100 * ((Math.max(0, window.innerHeight - 160) / 2) / window.innerHeight);
   const leftPos = 100 * ((Math.max(0, window.innerWidth - 580) / 2) / window.innerWidth);
   postEl.style.top = `${topPos}vh`;
   postEl.style.left = `${leftPos}vw`;
-  // Выводим пост на передний план при клике
-  postEl.addEventListener('mousedown', () => putAboveAll(postEl));
-  postEl.addEventListener('touchstart', () => putAboveAll(postEl));
 
   const postBody = document.createElement('div');
   postBody.classList.add('post__body', 'post__body_big-title');
@@ -154,13 +152,11 @@ function createHintPostEl() {
   const postEl = createEmptyPostEl('hint');
 
   postEl.style.width = '230px';
+  // Генерируем случайное расположение на странице
   const topPos = 100 * (getRandom(0, Math.max(window.innerHeight - 230, 0)) / window.innerHeight);
   const leftPos = 100 * (getRandom(0, Math.max(window.innerWidth - 230, 0)) / window.innerWidth);
   postEl.style.top = `${topPos}vh`;
   postEl.style.left = `${leftPos}vw`;
-  // Выводим пост на передний план при клике
-  postEl.addEventListener('mousedown', () => putAboveAll(postEl));
-  postEl.addEventListener('touchstart', () => putAboveAll(postEl));
 
   const postBody = document.createElement('div');
   postBody.classList.add('post__body', 'post__body_no-title');
