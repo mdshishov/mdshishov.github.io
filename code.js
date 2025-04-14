@@ -64,7 +64,6 @@ function createEmptyPostEl(headerText = '') {
   const closeBtn = document.createElement('button');
   closeBtn.type = 'button';
   closeBtn.classList.add('post__btn-close');
-  closeBtn.textContent='×';
   closeBtn.addEventListener('click', () => {
     postEl.remove();
   })

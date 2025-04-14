@@ -87,16 +87,15 @@ body {
 
   cursor: pointer;
 
-  font-size: 24px;
-  line-height: 18px;
-  color: var(--color2);
-
   background-color: var(--color1);
+  background-image: url("./src/icons/close_black.svg");
+  background-position: center;
 }
 .post__btn-close:hover {
   color: var(--color1);
 
   background-color: var(--color2);
+  background-image: url("./src/icons/close_white.svg");
 }
 
 .post__body {
@@ -123,7 +122,7 @@ body {
 .post__body__btn {
   cursor: pointer;
 
-  background-color: var(--color2);
+  background-color: transparent;
 
   font-family: "Consola", monospace;
   font-size: 16px;
