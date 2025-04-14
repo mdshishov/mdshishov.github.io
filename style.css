@@ -60,7 +60,7 @@ body {
 }
 
 .post.is-moving {
-  box-shadow: 7px 7px var(--color2);
+  box-shadow: 8px 8px var(--color2);
   transform: translate(-2px, -2px);
 }
 
