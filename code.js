@@ -1,18 +1,24 @@
-// Читаем файл и добавляем элементы на страницу
-document.addEventListener('DOMContentLoaded', app);
+// Массив для информации об элементах, которую необходимо отобразить
+const posts = []
 
-// Добавляем события для перемещения наших элемментов
-document.addEventListener('mousedown', startPostMoving);
-document.addEventListener('touchstart', startPostMoving);
+// Состояние для перемещения элементов по странице
+const movingState = {
+  elem: null,
+  isMoving: false,
+  oldElemPos: {
+    left: null,
+    top: null,
+  },
+  oldMousePos: {
+    x: null,
+    y: null,
+  }
+};
 
-document.addEventListener('mousemove', movePost);
-document.addEventListener('touchmove', movePost);
+// Запускаем приложение
+document.addEventListener('DOMContentLoaded', startApp);
 
-document.addEventListener('mouseup', endPostMoving);
-document.addEventListener('touchend', endPostMoving);
-
-async function app() {
-  const posts = [];
+async function startApp() {
   try {
     posts.push(...await fetch('./posts.json').then((result) => result.json()));
   } catch (error) {
@@ -20,32 +26,43 @@ async function app() {
     return;
   }
 
-  const container = document.getElementById('app');
+  // Добавляем элементы на страницу
+  renderStartState();
+
+  // Добавляем события для перемещения наших элемментов
+  document.addEventListener('mousedown', startPostMoving);
+  document.addEventListener('touchstart', startPostMoving);
+
+  document.addEventListener('mousemove', movePost);
+  document.addEventListener('touchmove', movePost);
+
+  document.addEventListener('mouseup', endPostMoving);
+  document.addEventListener('touchend', endPostMoving);
+}
+
+function renderStartState() {
+  const container = document.getElementById('container');
   if (!container) {
     showErrorMessage();
     return;
   }
 
-  renderStartState();
+  shuffleArray(posts);
+  posts.forEach((post, i) => {
+    postEl = createPostEl(post);
+    postEl.style.zIndex = i;
+    container.append(postEl);
+  });
 
-  function renderStartState() {
-    shuffleArray(posts);
-    posts.forEach((post, i) => {
-      postEl = createPostEl(post);
-      postEl.style.zIndex = i;
-      container.append(postEl);
-    });
+  const titlePostEl = createTitlePostEl();
+  titlePostEl.style.zIndex = posts.length;
+  container.append(titlePostEl);
 
-    const titlePostEl = createTitlePostEl();
-    titlePostEl.style.zIndex = posts.length;
-    container.append(titlePostEl);
-
-    // Если ранее был отказ от показа подсказки, то окно не показываем
-    if (!localStorage.getItem('noHint')) {
-      const hintPostEl = createHintPostEl();
-      hintPostEl.style.zIndex = posts.length + 1;
-      container.append(hintPostEl);
-    }
+  // Если ранее был отказ от показа подсказки, то окно не показываем
+  if (!localStorage.getItem('noHint')) {
+    const hintPostEl = createHintPostEl();
+    hintPostEl.style.zIndex = posts.length + 1;
+    container.append(hintPostEl);
   }
 }
 
@@ -194,19 +211,6 @@ function putAboveAll(postEl) {
     if (zIndex > maxZIndex) maxZIndex = zIndex;
   });
   postEl.style.zIndex = maxZIndex;
-};
-
-const movingState = {
-  elem: null,
-  isMoving: false,
-  oldElemPos: {
-    left: null,
-    top: null,
-  },
-  oldMousePos: {
-    x: null,
-    y: null,
-  }
 };
 
 function startPostMoving(event) {
