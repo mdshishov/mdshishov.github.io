@@ -59,6 +59,11 @@ body {
   box-shadow: 5px 5px var(--color2);
 }
 
+.post.is-moving {
+  box-shadow: 9px 9px var(--color2);
+  transform: translate(-2px, -2px);
+}
+
 .post__header {
   position: relative;
   width: 100%;
@@ -96,6 +101,9 @@ body {
 
   background-color: var(--color2);
   background-image: url("./src/icons/close_white.svg");
+}
+.post.is-moving .post__btn-close{
+  pointer-events: none;
 }
 
 .post__body {

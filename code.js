@@ -221,6 +221,7 @@ function startPostMoving(event) {
   const postEl = event.target.closest('.post');
   movingState.elem = postEl;
   movingState.isMoving = true;
+  postEl.classList.add('is-moving');
 
   // Для курсора и касания
   movingState.oldMousePos.x = event.clientX ? event.clientX : event.touches[0].clientX;
@@ -263,6 +264,8 @@ function movePost(event) {
 
 function endPostMoving() {
   movingState.isMoving = false;
+  const postEl = movingState.elem;
+  postEl.classList.remove('is-moving');
 }
 
 function getRandom(start, end) {
