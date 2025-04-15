@@ -43,6 +43,8 @@ body {
   line-height: 1.12;
   color: var(--color2);
   overflow: hidden;
+  width: 100vw;
+  height: 100vh;
 }
 
 .container {
