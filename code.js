@@ -1,6 +1,3 @@
-// Массив для информации об элементах, которую необходимо отобразить
-const posts = []
-
 // Состояние для перемещения элементов по странице
 const movingState = {
   elem: null,
@@ -19,9 +16,17 @@ const movingState = {
 document.addEventListener('DOMContentLoaded', startApp);
 
 async function startApp() {
+  // Массив для информации об элементах, которую необходимо отобразить
+  const posts = []
   try {
     posts.push(...await fetch('./posts.json').then((result) => result.json()));
   } catch (error) {
+    showErrorMessage();
+    return;
+  }
+
+  const container = document.getElementById('container');
+  if (!container) {
     showErrorMessage();
     return;
   }
@@ -38,31 +43,25 @@ async function startApp() {
 
   document.addEventListener('mouseup', endPostMoving);
   document.addEventListener('touchend', endPostMoving);
-}
 
-function renderStartState() {
-  const container = document.getElementById('container');
-  if (!container) {
-    showErrorMessage();
-    return;
-  }
-
-  shuffleArray(posts);
-  posts.forEach((post, i) => {
-    postEl = createPostEl(post);
-    postEl.style.zIndex = i;
-    container.append(postEl);
-  });
-
-  const titlePostEl = createTitlePostEl();
-  titlePostEl.style.zIndex = posts.length;
-  container.append(titlePostEl);
-
-  // Если ранее был отказ от показа подсказки, то окно не показываем
-  if (!localStorage.getItem('noHint')) {
-    const hintPostEl = createHintPostEl();
-    hintPostEl.style.zIndex = posts.length + 1;
-    container.append(hintPostEl);
+  function renderStartState() {
+    shuffleArray(posts);
+    posts.forEach((post, i) => {
+      postEl = createPostEl(post);
+      postEl.style.zIndex = i;
+      container.append(postEl);
+    });
+  
+    const titlePostEl = createTitlePostEl();
+    titlePostEl.style.zIndex = posts.length;
+    container.append(titlePostEl);
+  
+    // Если ранее был отказ от показа подсказки, то окно не показываем
+    if (!localStorage.getItem('noHint')) {
+      const hintPostEl = createHintPostEl();
+      hintPostEl.style.zIndex = posts.length + 1;
+      container.append(hintPostEl);
+    }
   }
 }
 
