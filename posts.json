@@ -1,17 +1,17 @@
 [
   {
     "id": 1,
-    "header": "registration-form",
+    "header": "registration",
     "title": "Форма регистрации",
-    "description": "Форма регистрации с мгновенной верификацией и последующей возможностью авторизации.",
+    "description": "Форма регистрации с верификацией и последующей возможностью авторизации.",
     "links": [
       {
         "text": "Попробовать онлайн",
-        "url": "./projects/registration-form"
+        "url": "./projects/registration"
       },
       {
         "text": "Git-репозиторий",
-        "url": "https://github.com/mdshishov/mdshishov.github.io/tree/main/projects/registration-form"
+        "url": "https://github.com/mdshishov/mdshishov.github.io/tree/main/projects/registration"
       }
     ]
   },

@@ -6,10 +6,10 @@
 
 ## Форма регистрации
 
-Форма регистрации с мгновенной верификацией и последующей возможностью авторизации.
+Форма регистрации с верификацией и последующей возможностью авторизации.
 
-[Попробовать онлайн](https://mdshishov.github.io/projects/registration-form)<br/>
-[Git-репозиторий](https://github.com/mdshishov/mdshishov.github.io/tree/main/projects/registration-form)
+[Попробовать онлайн](https://mdshishov.github.io/projects/registration)<br/>
+[Git-репозиторий](https://github.com/mdshishov/mdshishov.github.io/tree/main/projects/registration)
 
 ## Список дел
 
