@@ -105,8 +105,8 @@ function createPostEl(postData) {
   const postWidth = getRandom(250, 350);
   postEl.style.width = `${postWidth}px`;
   // Генерируем случайное расположение на странице
-  const topPos = 100 * (getRandom(0, Math.max(window.innerHeight - 250, 0)) / window.innerHeight);
-  const leftPos = 100 * (getRandom(0, Math.max(window.innerWidth - postWidth, 0)) / window.innerWidth);
+  const topPos = 100 * (getRandom(0, Math.max(window.innerHeight - 250 * uiState.zoom, 0)) / window.innerHeight);
+  const leftPos = 100 * (getRandom(0, Math.max(window.innerWidth - postWidth * uiState.zoom, 0)) / window.innerWidth);
   postEl.style.top = `${topPos}%`;
   postEl.style.left = `${leftPos}%`;
 
@@ -148,9 +148,10 @@ function createPostEl(postData) {
 function createTitlePostEl() {
   const postEl = createEmptyPostEl('title');
 
+  postEl.style.width = '590px';
   // Располагаем в ценрте
-  const topPos = 100 * ((Math.max(0, window.innerHeight - 160) / 2) / window.innerHeight);
-  const leftPos = 100 * ((Math.max(0, window.innerWidth - 580) / 2) / window.innerWidth);
+  const topPos = 100 * ((Math.max(0, window.innerHeight - 160 * uiState.zoom) / 2) / window.innerHeight);
+  const leftPos = 100 * ((Math.max(0, window.innerWidth - 590 * uiState.zoom) / 2) / window.innerWidth);
   postEl.style.top = `${topPos}%`;
   postEl.style.left = `${leftPos}%`;
 
@@ -176,8 +177,8 @@ function createHintPostEl() {
 
   postEl.style.width = '230px';
   // Генерируем случайное расположение на странице
-  const topPos = 100 * (getRandom(0, Math.max(window.innerHeight - 230, 0)) / window.innerHeight);
-  const leftPos = 100 * (getRandom(0, Math.max(window.innerWidth - 230, 0)) / window.innerWidth);
+  const topPos = 100 * (getRandom(0, Math.max(window.innerHeight - 230 * uiState.zoom, 0)) / window.innerHeight);
+  const leftPos = 100 * (getRandom(0, Math.max(window.innerWidth - 230 * uiState.zoom, 0)) / window.innerWidth);
   postEl.style.top = `${topPos}%`;
   postEl.style.left = `${leftPos}%`;
 
