@@ -1,3 +1,7 @@
+const uiState = {
+  zoom: 1,
+}
+
 // Состояние для перемещения элементов по странице
 const movingState = {
   elem: null,
@@ -30,6 +34,10 @@ async function startApp() {
     showErrorMessage();
     return;
   }
+
+  // Добавляем масштабирование, если экран слишком маленький
+  updateBodyZoom();
+  window.addEventListener('resize', updateBodyZoom);
 
   // Добавляем элементы на страницу
   renderStartState();
@@ -99,8 +107,8 @@ function createPostEl(postData) {
   // Генерируем случайное расположение на странице
   const topPos = 100 * (getRandom(0, Math.max(window.innerHeight - 250, 0)) / window.innerHeight);
   const leftPos = 100 * (getRandom(0, Math.max(window.innerWidth - postWidth, 0)) / window.innerWidth);
-  postEl.style.top = `${topPos}vh`;
-  postEl.style.left = `${leftPos}vw`;
+  postEl.style.top = `${topPos}%`;
+  postEl.style.left = `${leftPos}%`;
 
   const postBody = document.createElement('div');
   postBody.classList.add('post__body');
@@ -140,11 +148,11 @@ function createPostEl(postData) {
 function createTitlePostEl() {
   const postEl = createEmptyPostEl('title');
 
-  // Генерируем случайное расположение на странице
+  // Располагаем в ценрте
   const topPos = 100 * ((Math.max(0, window.innerHeight - 160) / 2) / window.innerHeight);
   const leftPos = 100 * ((Math.max(0, window.innerWidth - 580) / 2) / window.innerWidth);
-  postEl.style.top = `${topPos}vh`;
-  postEl.style.left = `${leftPos}vw`;
+  postEl.style.top = `${topPos}%`;
+  postEl.style.left = `${leftPos}%`;
 
   const postBody = document.createElement('div');
   postBody.classList.add('post__body', 'post__body_big-title');
@@ -170,8 +178,8 @@ function createHintPostEl() {
   // Генерируем случайное расположение на странице
   const topPos = 100 * (getRandom(0, Math.max(window.innerHeight - 230, 0)) / window.innerHeight);
   const leftPos = 100 * (getRandom(0, Math.max(window.innerWidth - 230, 0)) / window.innerWidth);
-  postEl.style.top = `${topPos}vh`;
-  postEl.style.left = `${leftPos}vw`;
+  postEl.style.top = `${topPos}%`;
+  postEl.style.left = `${leftPos}%`;
 
   const postBody = document.createElement('div');
   postBody.classList.add('post__body', 'post__body_no-title');
@@ -230,8 +238,8 @@ function startPostMoving(event) {
   movingState.oldMousePos.x = event.clientX ? event.clientX : event.touches[0].clientX;
   movingState.oldMousePos.y = event.clientY ? event.clientY : event.touches[0].clientY;
 
-  movingState.oldElemPos.left = Number(window.getComputedStyle(postEl).left.slice(0, -2));
-  movingState.oldElemPos.top = Number(window.getComputedStyle(postEl).top.slice(0, -2));
+  movingState.oldElemPos.left = postEl.offsetLeft;
+  movingState.oldElemPos.top = postEl.offsetTop;
 }
 
 function movePost(event) {
@@ -259,16 +267,21 @@ function movePost(event) {
 
   // Считаем новую позицию через относительные единицы
   const postEl = movingState.elem;
-  const newLeftPos = 100 * ((movingState.oldElemPos.left + distX) / window.innerWidth);
-  const newTopPos = 100 * ((movingState.oldElemPos.top + distY) / window.innerHeight);
-  postEl.style.left = `${newLeftPos}vw`;
-  postEl.style.top = `${newTopPos}vh`;
+  const newLeftPos = 100 * ((movingState.oldElemPos.left * uiState.zoom + distX) / window.innerWidth);
+  const newTopPos = 100 * ((movingState.oldElemPos.top * uiState.zoom + distY) / window.innerHeight);
+  postEl.style.left = `${newLeftPos}%`;
+  postEl.style.top = `${newTopPos}%`;
 }
 
 function endPostMoving() {
   movingState.isMoving = false;
   const postEl = movingState.elem;
-  postEl.classList.remove('is-moving');
+  if (postEl) postEl.classList.remove('is-moving');
+}
+
+function updateBodyZoom() {
+  uiState.zoom = Math.min(window.innerHeight / 500, window.innerWidth / 600, 1);
+  document.body.style.zoom = uiState.zoom;
 }
 
 function getRandom(start, end) {
