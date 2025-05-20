@@ -48,7 +48,7 @@
     ]
   },
   {
-    "id": 2,
+    "id": 4,
     "header": "fake-store",
     "title": "Fake Store API",
     "description": "SPA, позволяющее пользователю просматривать существующие позиции и добавлять новые. Работа с GET и POST-запросами.",
@@ -60,6 +60,18 @@
       {
         "text": "Git-репозиторий",
         "url": "https://github.com/mdshishov/mdshishov.github.io/tree/main/projects/fake-store"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "header": "shoe-store",
+    "title": "Shoe Store (Python)",
+    "description": "Desktop-приложение магазина обуви. Отвечал за разработку логики и интерфейса клиентской части.",
+    "links": [
+      {
+        "text": "Git-репозиторий",
+        "url": "https://github.com/Oligkondr/shoe_store.git"
       }
     ]
   }
